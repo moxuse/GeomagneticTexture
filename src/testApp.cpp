@@ -22,6 +22,7 @@ void testApp::update(){
     for(int i =1; i<ofGetWidth(); i+=8){
         for(int j =1; j<ofGetHeight(); j+=8){
             
+            //this caliculation makes contour map...
             r = ( pixs[((int)((int)(j*0.1) *geoMap.getWidth()+ (int)(i*0.1)) *3 + 0)]*0.12 * sin(pixs[((int)((int)((j*0.1-1)) * geoMap.getWidth()+ (int)((i*0.1)-1)) * 4 + 0)])+mouseY * 0.2);
             
             pPix[(int)(j *prceedMap.getWidth()+ i) *3 + 0] = r * 5;
@@ -71,21 +72,34 @@ void testApp::draw(){
     ofSetColor(255, 0, 0);
     ofDrawBitmapString( ofToString(ofGetFrameRate()), ofPoint(10,10) );
     
-    //draw scale lines
+    //draw scale lines/////////////////
+    
     ofSetColor(255, 255, 255);
     ofSetLineWidth(1);
     
     for(int i =0; i<36; i++){
         int xPoint;
         xPoint = i * 10 * dividWidthScalLat;
-        ofLine(xPoint,0,xPoint,10);
+        ofLine(xPoint,0,xPoint,15);
     }
     
     for(int i =0; i<18; i++){
         int yPoint;
         yPoint = i * 10 * dividWidthScalLon;
-        ofLine(0,yPoint,10,yPoint);
+        ofLine(0,yPoint,15,yPoint);
     }
+    
+    ofSetLineWidth( 1.0f );
+    for(int i =0; i<12; i++){
+        for(int j =0; j<6; j++){
+            ofPushMatrix();
+                ofTranslate( i * 30 * dividWidthScalLat, j * 30 * dividWidthScalLon );
+                drawCross( 10 );
+            ofPopMatrix();
+        }
+    }
+    
+    /////////////////////////////////
 }
 
 //--------------------------------------------------------------
@@ -131,4 +145,10 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+//--------------------------------------------------------------
+void testApp::drawCross(int crossLnegth){
+    ofLine(0, -1 * crossLnegth, 0, crossLnegth);
+    ofLine(-1 * crossLnegth, 0, crossLnegth, 0);
 }
