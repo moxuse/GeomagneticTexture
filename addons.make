@@ -1,0 +1,2 @@
+ofxGeoMag
+ofxThread

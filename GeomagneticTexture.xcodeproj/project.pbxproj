@@ -1,0 +1,827 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		072cb5fb938163f781b76c0bebf622b9 /* Geocentric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = d649a56824a300a623a644fed15debe1 /* Geocentric.cpp */; };
+		0a1468ef1f902c44edc4c5b1a4b0cbca /* GeoCoords.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68080e26a10cdd76662e15dfcefc649f /* GeoCoords.cpp */; };
+		130b4386388fb6dbc064739dc34aed5d /* TransverseMercator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8eecbbeb46df0a33b3b38a887628a167 /* TransverseMercator.cpp */; };
+		1549261b2ba9655fe8b6302c1ddb4177 /* AlbersEqualArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = a244ce25d45845ab862a22d105c65a3f /* AlbersEqualArea.cpp */; };
+		1b4cc809369d19b5bc7eac6458478058 /* CircularEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = eaa3a38c07ec03900781d1f49bfc5f1b /* CircularEngine.cpp */; };
+		1d0c2b892e9e35ac125821bf3a4ebb05 /* PolygonArea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93501291b0f56cab65a74e760568d103 /* PolygonArea.cpp */; };
+		1f71a635946663701cac926bbfcc9327 /* AzimuthalEquidistant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = cbf0efbf285103d0d75bee7cdc87c0a0 /* AzimuthalEquidistant.cpp */; };
+		205b39a7c9f13320a7b9b6ce3935e4a9 /* MagneticModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66f191158ed1f424f0374d1d0def587b /* MagneticModel.cpp */; };
+		20e01e8b3f2fddae9bef73e216fffe58 /* Geoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = f1a29ea5bf98496c25448a2ccd627148 /* Geoid.cpp */; };
+		2226584e1b75e0b35567f54aec80e8a5 /* Ellipsoid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c158c25d4580e50d291c0978ba3c4555 /* Ellipsoid.cpp */; };
+		22ccdbcf2970ef7f10797b25a7c9cf46 /* DMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e4bffbc6ee8e2b0dae7eabfd9623b5a7 /* DMS.cpp */; };
+		254190f9d04e811c7c1528bc9024d3cf /* Makefile.mk in Sources */ = {isa = PBXBuildFile; fileRef = 0a66213c32c708869824259333bff9e6 /* Makefile.mk */; };
+		271a7a55bff2407a804b87a92996e28a /* Makefile.am in Sources */ = {isa = PBXBuildFile; fileRef = 6e192f5e399d8a187fb7538e655e9a03 /* Makefile.am */; };
+		29b272019c30dfe0ed5051f50b3c971a /* NormalGravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 447c251577ee3d8beacb6a11a799b82c /* NormalGravity.cpp */; };
+		4a95d343af30ac357bbde88d16d36b58 /* OSGB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c9e53c5d65c7aa0018e8ed7eee6897f1 /* OSGB.cpp */; };
+		4f63a5c1750e5b95d97fc094e05b4310 /* SphericalEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83e70c6606f68eaecd259797eade23c3 /* SphericalEngine.cpp */; };
+		54d4b9478710974cf774be1af712ac40 /* Geodesic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = d575d940915244450ad93c1530ab4c9a /* Geodesic.cpp */; };
+		5f02f6dd01e47241d8678e3d9768689d /* Geographic.pro in Sources */ = {isa = PBXBuildFile; fileRef = 843c1b6562f492b2ef4c6cd76a40366a /* Geographic.pro */; };
+		63be0cc32a88844236275f57ebf05a93 /* Geohash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e6f5312bb65132aa9a6135ff66db23c1 /* Geohash.cpp */; };
+		67f7ab2307930e045bd9770e8fa14d20 /* EllipticFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e2a4b99ac87adc098faf263466a9f1e7 /* EllipticFunction.cpp */; };
+		6b4ed8579565e811d97fb07dc74cc7bb /* PolarStereographic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = df4cbd32452689ca05c772c0cc5358fa /* PolarStereographic.cpp */; };
+		7a4986599d8f678a43d3e28de9bc1aeb /* MGRS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 48c42cc3d40d7acee0531e83d875b62e /* MGRS.cpp */; };
+		8fb1217cc48bc81931f0f7010e9f8108 /* UTMUPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8f5cf56823944e6aebdd3be2beeb801a /* UTMUPS.cpp */; };
+		98240cee2a4dfd62be424f7b5c11d6d4 /* MagneticCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9babd8dd2d56124847b807f1fa86fc36 /* MagneticCircle.cpp */; };
+		98a3b430a963113edbaef35583521fd4 /* Makefile.in in Sources */ = {isa = PBXBuildFile; fileRef = 16aa091ebdbe5af97c43d745ed2f315c /* Makefile.in */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9740E8CC7DD009D7055 /* Carbon.framework */; };
+		E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
+		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		a28ab25fbe42859fefc855fc948470ed /* GravityModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = d8fb05e8176e5cac3d38af3c0feee597 /* GravityModel.cpp */; };
+		a63b1931474d956a160c527bc2e69a1a /* LambertConformalConic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 768b9f9908c7453de89ef3c4df17f9a9 /* LambertConformalConic.cpp */; };
+		a63c4b09a67a16e0a8235d696972531f /* GeodesicLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c89ddb7629eca78707f33f0a7c8a4dc5 /* GeodesicLine.cpp */; };
+		c35e7fd4e09c273bf738abbd12b4e167 /* LocalCartesian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03c15d33d76178999648e1e377d4b6c2 /* LocalCartesian.cpp */; };
+		c360c96a4abb299f0326f0ff5a3d8692 /* CMakeLists.txt in Sources */ = {isa = PBXBuildFile; fileRef = 42959a301cdf4ea089f4285a788f86fc /* CMakeLists.txt */; };
+		d2fefec5134cc6a48111dbfcef8d5046 /* CassiniSoldner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39a0bffcd607b081479ce264700441f7 /* CassiniSoldner.cpp */; };
+		d3c60da453f2bd8ca800e31b644bb374 /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = bfbf58e89cd62894f2e199e1dc4ed324 /* Utility.cpp */; };
+		e78027d4dab75b76e316692301662b44 /* Gnomonic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49606d965058f3faffd7f2fed0fb7d63 /* Gnomonic.cpp */; };
+		f68f2720bdf7bb4c8acf2fe1fd854b88 /* GravityCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = a0d6c61a9e1d5041428a3dd94a61cf5c /* GravityCircle.cpp */; };
+		fe231c9084cb2f5e20acb4973562351b /* TransverseMercatorExact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 480b8b916ef01f98f2bdaafdabcaf007 /* TransverseMercatorExact.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		00fe81802dba952fbcb8c0b4667c29b9 /* OSGB.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OSGB.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/OSGB.hpp; sourceTree = SOURCE_ROOT; };
+		03c15d33d76178999648e1e377d4b6c2 /* LocalCartesian.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LocalCartesian.cpp; path = ../../../addons/ofxGeoMag/src/LocalCartesian.cpp; sourceTree = SOURCE_ROOT; };
+		05ee0af250bd812fc95babd7f5307e11 /* Geodesic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Geodesic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Geodesic.hpp; sourceTree = SOURCE_ROOT; };
+		0a66213c32c708869824259333bff9e6 /* Makefile.mk */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = Makefile.mk; path = ../../../addons/ofxGeoMag/src/Makefile.mk; sourceTree = SOURCE_ROOT; };
+		0ba1b8ea03eb8b884d9b826f6b398d4f /* SphericalHarmonic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SphericalHarmonic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/SphericalHarmonic.hpp; sourceTree = SOURCE_ROOT; };
+		0deb55300ac7904dd24d5027f4615942 /* TransverseMercator.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TransverseMercator.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/TransverseMercator.hpp; sourceTree = SOURCE_ROOT; };
+		16aa091ebdbe5af97c43d745ed2f315c /* Makefile.in */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = Makefile.in; path = ../../../addons/ofxGeoMag/src/Makefile.in; sourceTree = SOURCE_ROOT; };
+		17accb680380ed5e9cb3f63d11005de1 /* NormalGravity.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NormalGravity.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/NormalGravity.hpp; sourceTree = SOURCE_ROOT; };
+		27505b5d27b6ec1a55971671cd45b8ef /* GravityCircle.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GravityCircle.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/GravityCircle.hpp; sourceTree = SOURCE_ROOT; };
+		294f65fad1ea87740126038c21c06c0f /* Geohash.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Geohash.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Geohash.hpp; sourceTree = SOURCE_ROOT; };
+		2d4ac6896ddc2209c7f72ccc4fdb9d99 /* Utility.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Utility.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Utility.hpp; sourceTree = SOURCE_ROOT; };
+		35ff59093f97782bafd2164955d11630 /* SphericalEngine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SphericalEngine.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/SphericalEngine.hpp; sourceTree = SOURCE_ROOT; };
+		39a0bffcd607b081479ce264700441f7 /* CassiniSoldner.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CassiniSoldner.cpp; path = ../../../addons/ofxGeoMag/src/CassiniSoldner.cpp; sourceTree = SOURCE_ROOT; };
+		3ce4c7bf96da7256e61639f7d187f887 /* UTMUPS.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = UTMUPS.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/UTMUPS.hpp; sourceTree = SOURCE_ROOT; };
+		3e4d5681fee41c7cd817e87d3e207bc2 /* Geoid.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Geoid.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Geoid.hpp; sourceTree = SOURCE_ROOT; };
+		42959a301cdf4ea089f4285a788f86fc /* CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = CMakeLists.txt; path = ../../../addons/ofxGeoMag/src/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		43fee9a7296d6f16dc051e659865f569 /* Ellipsoid.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Ellipsoid.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Ellipsoid.hpp; sourceTree = SOURCE_ROOT; };
+		447c251577ee3d8beacb6a11a799b82c /* NormalGravity.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = NormalGravity.cpp; path = ../../../addons/ofxGeoMag/src/NormalGravity.cpp; sourceTree = SOURCE_ROOT; };
+		480b8b916ef01f98f2bdaafdabcaf007 /* TransverseMercatorExact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TransverseMercatorExact.cpp; path = ../../../addons/ofxGeoMag/src/TransverseMercatorExact.cpp; sourceTree = SOURCE_ROOT; };
+		48c42cc3d40d7acee0531e83d875b62e /* MGRS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MGRS.cpp; path = ../../../addons/ofxGeoMag/src/MGRS.cpp; sourceTree = SOURCE_ROOT; };
+		49606d965058f3faffd7f2fed0fb7d63 /* Gnomonic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Gnomonic.cpp; path = ../../../addons/ofxGeoMag/src/Gnomonic.cpp; sourceTree = SOURCE_ROOT; };
+		4bb4d7d0ccede12f73f869a192f5f557 /* Geocentric.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Geocentric.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Geocentric.hpp; sourceTree = SOURCE_ROOT; };
+		534ba59c3d1b37eaa2ba4d503a149547 /* SphericalHarmonic1.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SphericalHarmonic1.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/SphericalHarmonic1.hpp; sourceTree = SOURCE_ROOT; };
+		66f191158ed1f424f0374d1d0def587b /* MagneticModel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MagneticModel.cpp; path = ../../../addons/ofxGeoMag/src/MagneticModel.cpp; sourceTree = SOURCE_ROOT; };
+		68080e26a10cdd76662e15dfcefc649f /* GeoCoords.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GeoCoords.cpp; path = ../../../addons/ofxGeoMag/src/GeoCoords.cpp; sourceTree = SOURCE_ROOT; };
+		6dbb75515f889f989c12f8e08cb13160 /* PolygonArea.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PolygonArea.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/PolygonArea.hpp; sourceTree = SOURCE_ROOT; };
+		6e192f5e399d8a187fb7538e655e9a03 /* Makefile.am */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = Makefile.am; path = ../../../addons/ofxGeoMag/src/Makefile.am; sourceTree = SOURCE_ROOT; };
+		768b9f9908c7453de89ef3c4df17f9a9 /* LambertConformalConic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = LambertConformalConic.cpp; path = ../../../addons/ofxGeoMag/src/LambertConformalConic.cpp; sourceTree = SOURCE_ROOT; };
+		777eb48cb199e71d56153a9f15d8781c /* GeodesicLine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GeodesicLine.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/GeodesicLine.hpp; sourceTree = SOURCE_ROOT; };
+		789cc818bda666d0c7a130e4cbeff510 /* Config.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Config.h; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Config.h; sourceTree = SOURCE_ROOT; };
+		7c010e21840c73b99044d1019cca9c81 /* Gnomonic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Gnomonic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Gnomonic.hpp; sourceTree = SOURCE_ROOT; };
+		8285a159f2be98bacc7c8aeb6600415e /* Constants.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Constants.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Constants.hpp; sourceTree = SOURCE_ROOT; };
+		83e70c6606f68eaecd259797eade23c3 /* SphericalEngine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = SphericalEngine.cpp; path = ../../../addons/ofxGeoMag/src/SphericalEngine.cpp; sourceTree = SOURCE_ROOT; };
+		843c1b6562f492b2ef4c6cd76a40366a /* Geographic.pro */ = {isa = PBXFileReference; explicitFileType = file; fileEncoding = 30; name = Geographic.pro; path = ../../../addons/ofxGeoMag/src/Geographic.pro; sourceTree = SOURCE_ROOT; };
+		84cb7544d454e6fc6087549a50806db8 /* AlbersEqualArea.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AlbersEqualArea.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/AlbersEqualArea.hpp; sourceTree = SOURCE_ROOT; };
+		8a58a86d2a8bf70d0cacd8a9853740ad /* Accumulator.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Accumulator.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Accumulator.hpp; sourceTree = SOURCE_ROOT; };
+		8e06603eb0e163919a1addb3fc0dc431 /* CircularEngine.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CircularEngine.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/CircularEngine.hpp; sourceTree = SOURCE_ROOT; };
+		8eecbbeb46df0a33b3b38a887628a167 /* TransverseMercator.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TransverseMercator.cpp; path = ../../../addons/ofxGeoMag/src/TransverseMercator.cpp; sourceTree = SOURCE_ROOT; };
+		8f06d1ff6e0c929440656d5d75d4961f /* ofxGeoMag.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGeoMag.h; path = ../../../addons/ofxGeoMag/src/ofxGeoMag.h; sourceTree = SOURCE_ROOT; };
+		8f5cf56823944e6aebdd3be2beeb801a /* UTMUPS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UTMUPS.cpp; path = ../../../addons/ofxGeoMag/src/UTMUPS.cpp; sourceTree = SOURCE_ROOT; };
+		93501291b0f56cab65a74e760568d103 /* PolygonArea.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = PolygonArea.cpp; path = ../../../addons/ofxGeoMag/src/PolygonArea.cpp; sourceTree = SOURCE_ROOT; };
+		93b0620f3fb8593c6623fb8adff36785 /* Math.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Math.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/Math.hpp; sourceTree = SOURCE_ROOT; };
+		95ae9fbbbbd19c92495325bc70970cda /* CassiniSoldner.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CassiniSoldner.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/CassiniSoldner.hpp; sourceTree = SOURCE_ROOT; };
+		98414a11dc267130ecc19b6cd0b159c9 /* PolarStereographic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PolarStereographic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/PolarStereographic.hpp; sourceTree = SOURCE_ROOT; };
+		9babd8dd2d56124847b807f1fa86fc36 /* MagneticCircle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MagneticCircle.cpp; path = ../../../addons/ofxGeoMag/src/MagneticCircle.cpp; sourceTree = SOURCE_ROOT; };
+		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		E45BE9740E8CC7DD009D7055 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E4B69B5B0A3A1756003C02F2 /* GeomagneticTextureDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeomagneticTextureDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		a0d6c61a9e1d5041428a3dd94a61cf5c /* GravityCircle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GravityCircle.cpp; path = ../../../addons/ofxGeoMag/src/GravityCircle.cpp; sourceTree = SOURCE_ROOT; };
+		a244ce25d45845ab862a22d105c65a3f /* AlbersEqualArea.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AlbersEqualArea.cpp; path = ../../../addons/ofxGeoMag/src/AlbersEqualArea.cpp; sourceTree = SOURCE_ROOT; };
+		a2b3f8e5d8c31d4e0c89503f0da59565 /* MagneticModel.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MagneticModel.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/MagneticModel.hpp; sourceTree = SOURCE_ROOT; };
+		a4435120f296f2c9104345fa955c2b1d /* TransverseMercatorExact.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TransverseMercatorExact.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/TransverseMercatorExact.hpp; sourceTree = SOURCE_ROOT; };
+		b9813944c5a44b127ccd48d99e4159a3 /* GravityModel.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GravityModel.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/GravityModel.hpp; sourceTree = SOURCE_ROOT; };
+		bec67ef1c4dc79c757bae1cb1ea527a9 /* DMS.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DMS.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/DMS.hpp; sourceTree = SOURCE_ROOT; };
+		bfbf58e89cd62894f2e199e1dc4ed324 /* Utility.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Utility.cpp; path = ../../../addons/ofxGeoMag/src/Utility.cpp; sourceTree = SOURCE_ROOT; };
+		c158c25d4580e50d291c0978ba3c4555 /* Ellipsoid.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Ellipsoid.cpp; path = ../../../addons/ofxGeoMag/src/Ellipsoid.cpp; sourceTree = SOURCE_ROOT; };
+		c89ddb7629eca78707f33f0a7c8a4dc5 /* GeodesicLine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GeodesicLine.cpp; path = ../../../addons/ofxGeoMag/src/GeodesicLine.cpp; sourceTree = SOURCE_ROOT; };
+		c8f41909f5d307ec278f65559487e6df /* LambertConformalConic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = LambertConformalConic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/LambertConformalConic.hpp; sourceTree = SOURCE_ROOT; };
+		c9e53c5d65c7aa0018e8ed7eee6897f1 /* OSGB.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OSGB.cpp; path = ../../../addons/ofxGeoMag/src/OSGB.cpp; sourceTree = SOURCE_ROOT; };
+		ca4384365f8007c678819bf1031b4fa1 /* GeoCoords.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GeoCoords.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/GeoCoords.hpp; sourceTree = SOURCE_ROOT; };
+		cbf0efbf285103d0d75bee7cdc87c0a0 /* AzimuthalEquidistant.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AzimuthalEquidistant.cpp; path = ../../../addons/ofxGeoMag/src/AzimuthalEquidistant.cpp; sourceTree = SOURCE_ROOT; };
+		cee99eea293161a70bb8c1b5007c3e06 /* SphericalHarmonic2.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = SphericalHarmonic2.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/SphericalHarmonic2.hpp; sourceTree = SOURCE_ROOT; };
+		d31e299317d20a99e3712e855af28922 /* LocalCartesian.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = LocalCartesian.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/LocalCartesian.hpp; sourceTree = SOURCE_ROOT; };
+		d575d940915244450ad93c1530ab4c9a /* Geodesic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Geodesic.cpp; path = ../../../addons/ofxGeoMag/src/Geodesic.cpp; sourceTree = SOURCE_ROOT; };
+		d649a56824a300a623a644fed15debe1 /* Geocentric.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Geocentric.cpp; path = ../../../addons/ofxGeoMag/src/Geocentric.cpp; sourceTree = SOURCE_ROOT; };
+		d6ca02a8dbf56b67386e011be94022e8 /* MagneticCircle.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MagneticCircle.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/MagneticCircle.hpp; sourceTree = SOURCE_ROOT; };
+		d8fb05e8176e5cac3d38af3c0feee597 /* GravityModel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GravityModel.cpp; path = ../../../addons/ofxGeoMag/src/GravityModel.cpp; sourceTree = SOURCE_ROOT; };
+		d9eab13c61adb1c883a37d9e23ff8993 /* AzimuthalEquidistant.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = AzimuthalEquidistant.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/AzimuthalEquidistant.hpp; sourceTree = SOURCE_ROOT; };
+		de1d4f81f7f2d4de626f505129a6913f /* EllipticFunction.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = EllipticFunction.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/EllipticFunction.hpp; sourceTree = SOURCE_ROOT; };
+		df4cbd32452689ca05c772c0cc5358fa /* PolarStereographic.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = PolarStereographic.cpp; path = ../../../addons/ofxGeoMag/src/PolarStereographic.cpp; sourceTree = SOURCE_ROOT; };
+		e2a4b99ac87adc098faf263466a9f1e7 /* EllipticFunction.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = EllipticFunction.cpp; path = ../../../addons/ofxGeoMag/src/EllipticFunction.cpp; sourceTree = SOURCE_ROOT; };
+		e3e370069e500b5601d8b56ade0a136b /* ofxThread.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxThread.h; path = ../../../addons/ofxThread/src/ofxThread.h; sourceTree = SOURCE_ROOT; };
+		e4bffbc6ee8e2b0dae7eabfd9623b5a7 /* DMS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = DMS.cpp; path = ../../../addons/ofxGeoMag/src/DMS.cpp; sourceTree = SOURCE_ROOT; };
+		e6f5312bb65132aa9a6135ff66db23c1 /* Geohash.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Geohash.cpp; path = ../../../addons/ofxGeoMag/src/Geohash.cpp; sourceTree = SOURCE_ROOT; };
+		eaa3a38c07ec03900781d1f49bfc5f1b /* CircularEngine.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CircularEngine.cpp; path = ../../../addons/ofxGeoMag/src/CircularEngine.cpp; sourceTree = SOURCE_ROOT; };
+		ee651289d7f7642a5aee0df603bbf4d9 /* MGRS.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MGRS.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/MGRS.hpp; sourceTree = SOURCE_ROOT; };
+		f1a29ea5bf98496c25448a2ccd627148 /* Geoid.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Geoid.cpp; path = ../../../addons/ofxGeoMag/src/Geoid.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
+				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
+				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3506b1466498a5bf2a394809b3cd3b95 /* ofxGeoMag */ = {
+			isa = PBXGroup;
+			children = (
+				cb6997f9b538d34811d20cb7cf442f61 /* src */,
+				f8d637fac222431921b6aad6c744d627 /* libs */,
+			);
+			name = ofxGeoMag;
+			sourceTree = "<group>";
+		};
+		7c838ac2769f478f4ae5850b4e8e9472 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				e3e370069e500b5601d8b56ade0a136b /* ofxThread.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		8fa646eeaeeae9a31863bd117ded747b /* GeographicLib */ = {
+			isa = PBXGroup;
+			children = (
+				8a58a86d2a8bf70d0cacd8a9853740ad /* Accumulator.hpp */,
+				84cb7544d454e6fc6087549a50806db8 /* AlbersEqualArea.hpp */,
+				d9eab13c61adb1c883a37d9e23ff8993 /* AzimuthalEquidistant.hpp */,
+				95ae9fbbbbd19c92495325bc70970cda /* CassiniSoldner.hpp */,
+				8e06603eb0e163919a1addb3fc0dc431 /* CircularEngine.hpp */,
+				789cc818bda666d0c7a130e4cbeff510 /* Config.h */,
+				8285a159f2be98bacc7c8aeb6600415e /* Constants.hpp */,
+				bec67ef1c4dc79c757bae1cb1ea527a9 /* DMS.hpp */,
+				43fee9a7296d6f16dc051e659865f569 /* Ellipsoid.hpp */,
+				de1d4f81f7f2d4de626f505129a6913f /* EllipticFunction.hpp */,
+				4bb4d7d0ccede12f73f869a192f5f557 /* Geocentric.hpp */,
+				ca4384365f8007c678819bf1031b4fa1 /* GeoCoords.hpp */,
+				05ee0af250bd812fc95babd7f5307e11 /* Geodesic.hpp */,
+				777eb48cb199e71d56153a9f15d8781c /* GeodesicLine.hpp */,
+				294f65fad1ea87740126038c21c06c0f /* Geohash.hpp */,
+				3e4d5681fee41c7cd817e87d3e207bc2 /* Geoid.hpp */,
+				7c010e21840c73b99044d1019cca9c81 /* Gnomonic.hpp */,
+				27505b5d27b6ec1a55971671cd45b8ef /* GravityCircle.hpp */,
+				b9813944c5a44b127ccd48d99e4159a3 /* GravityModel.hpp */,
+				c8f41909f5d307ec278f65559487e6df /* LambertConformalConic.hpp */,
+				d31e299317d20a99e3712e855af28922 /* LocalCartesian.hpp */,
+				d6ca02a8dbf56b67386e011be94022e8 /* MagneticCircle.hpp */,
+				a2b3f8e5d8c31d4e0c89503f0da59565 /* MagneticModel.hpp */,
+				93b0620f3fb8593c6623fb8adff36785 /* Math.hpp */,
+				ee651289d7f7642a5aee0df603bbf4d9 /* MGRS.hpp */,
+				17accb680380ed5e9cb3f63d11005de1 /* NormalGravity.hpp */,
+				00fe81802dba952fbcb8c0b4667c29b9 /* OSGB.hpp */,
+				98414a11dc267130ecc19b6cd0b159c9 /* PolarStereographic.hpp */,
+				6dbb75515f889f989c12f8e08cb13160 /* PolygonArea.hpp */,
+				35ff59093f97782bafd2164955d11630 /* SphericalEngine.hpp */,
+				0ba1b8ea03eb8b884d9b826f6b398d4f /* SphericalHarmonic.hpp */,
+				534ba59c3d1b37eaa2ba4d503a149547 /* SphericalHarmonic1.hpp */,
+				cee99eea293161a70bb8c1b5007c3e06 /* SphericalHarmonic2.hpp */,
+				0deb55300ac7904dd24d5027f4615942 /* TransverseMercator.hpp */,
+				a4435120f296f2c9104345fa955c2b1d /* TransverseMercatorExact.hpp */,
+				2d4ac6896ddc2209c7f72ccc4fdb9d99 /* Utility.hpp */,
+				3ce4c7bf96da7256e61639f7d187f887 /* UTMUPS.hpp */,
+			);
+			name = GeographicLib;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				3506b1466498a5bf2a394809b3cd3b95 /* ofxGeoMag */,
+				f7445ce7f5355406b00131ea062b56d1 /* ofxThread */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4C2424410CC5A17004149E2 /* AppKit.framework */,
+				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
+				E4C2424610CC5A17004149E2 /* IOKit.framework */,
+				E45BE9710E8CC7DD009D7055 /* AGL.framework */,
+				E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */,
+				E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */,
+				E45BE9740E8CC7DD009D7055 /* Carbon.framework */,
+				E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */,
+				E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */,
+				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
+				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
+				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+			);
+			name = "system frameworks";
+			sourceTree = "<group>";
+		};
+		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
+			);
+			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E45BE5980E8CC70C009D7055 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
+				BBAB23C913894ECA00AA2426 /* system frameworks */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E45BE5980E8CC70C009D7055 /* frameworks */,
+				E4B69B5B0A3A1756003C02F2 /* GeomagneticTextureDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		cb6997f9b538d34811d20cb7cf442f61 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				a244ce25d45845ab862a22d105c65a3f /* AlbersEqualArea.cpp */,
+				cbf0efbf285103d0d75bee7cdc87c0a0 /* AzimuthalEquidistant.cpp */,
+				39a0bffcd607b081479ce264700441f7 /* CassiniSoldner.cpp */,
+				eaa3a38c07ec03900781d1f49bfc5f1b /* CircularEngine.cpp */,
+				42959a301cdf4ea089f4285a788f86fc /* CMakeLists.txt */,
+				e4bffbc6ee8e2b0dae7eabfd9623b5a7 /* DMS.cpp */,
+				c158c25d4580e50d291c0978ba3c4555 /* Ellipsoid.cpp */,
+				e2a4b99ac87adc098faf263466a9f1e7 /* EllipticFunction.cpp */,
+				d649a56824a300a623a644fed15debe1 /* Geocentric.cpp */,
+				68080e26a10cdd76662e15dfcefc649f /* GeoCoords.cpp */,
+				d575d940915244450ad93c1530ab4c9a /* Geodesic.cpp */,
+				c89ddb7629eca78707f33f0a7c8a4dc5 /* GeodesicLine.cpp */,
+				843c1b6562f492b2ef4c6cd76a40366a /* Geographic.pro */,
+				e6f5312bb65132aa9a6135ff66db23c1 /* Geohash.cpp */,
+				f1a29ea5bf98496c25448a2ccd627148 /* Geoid.cpp */,
+				49606d965058f3faffd7f2fed0fb7d63 /* Gnomonic.cpp */,
+				a0d6c61a9e1d5041428a3dd94a61cf5c /* GravityCircle.cpp */,
+				d8fb05e8176e5cac3d38af3c0feee597 /* GravityModel.cpp */,
+				768b9f9908c7453de89ef3c4df17f9a9 /* LambertConformalConic.cpp */,
+				03c15d33d76178999648e1e377d4b6c2 /* LocalCartesian.cpp */,
+				9babd8dd2d56124847b807f1fa86fc36 /* MagneticCircle.cpp */,
+				66f191158ed1f424f0374d1d0def587b /* MagneticModel.cpp */,
+				6e192f5e399d8a187fb7538e655e9a03 /* Makefile.am */,
+				16aa091ebdbe5af97c43d745ed2f315c /* Makefile.in */,
+				0a66213c32c708869824259333bff9e6 /* Makefile.mk */,
+				48c42cc3d40d7acee0531e83d875b62e /* MGRS.cpp */,
+				447c251577ee3d8beacb6a11a799b82c /* NormalGravity.cpp */,
+				8f06d1ff6e0c929440656d5d75d4961f /* ofxGeoMag.h */,
+				c9e53c5d65c7aa0018e8ed7eee6897f1 /* OSGB.cpp */,
+				df4cbd32452689ca05c772c0cc5358fa /* PolarStereographic.cpp */,
+				93501291b0f56cab65a74e760568d103 /* PolygonArea.cpp */,
+				83e70c6606f68eaecd259797eade23c3 /* SphericalEngine.cpp */,
+				8eecbbeb46df0a33b3b38a887628a167 /* TransverseMercator.cpp */,
+				480b8b916ef01f98f2bdaafdabcaf007 /* TransverseMercatorExact.cpp */,
+				bfbf58e89cd62894f2e199e1dc4ed324 /* Utility.cpp */,
+				8f5cf56823944e6aebdd3be2beeb801a /* UTMUPS.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		f7445ce7f5355406b00131ea062b56d1 /* ofxThread */ = {
+			isa = PBXGroup;
+			children = (
+				7c838ac2769f478f4ae5850b4e8e9472 /* src */,
+			);
+			name = ofxThread;
+			sourceTree = "<group>";
+		};
+		f8d637fac222431921b6aad6c744d627 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				8fa646eeaeeae9a31863bd117ded747b /* GeographicLib */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* GeomagneticTexture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "GeomagneticTexture" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = GeomagneticTexture;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* GeomagneticTextureDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "GeomagneticTexture" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* GeomagneticTexture */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				1549261b2ba9655fe8b6302c1ddb4177 /* AlbersEqualArea.cpp in Sources */,
+				1f71a635946663701cac926bbfcc9327 /* AzimuthalEquidistant.cpp in Sources */,
+				d2fefec5134cc6a48111dbfcef8d5046 /* CassiniSoldner.cpp in Sources */,
+				1b4cc809369d19b5bc7eac6458478058 /* CircularEngine.cpp in Sources */,
+				c360c96a4abb299f0326f0ff5a3d8692 /* CMakeLists.txt in Sources */,
+				22ccdbcf2970ef7f10797b25a7c9cf46 /* DMS.cpp in Sources */,
+				2226584e1b75e0b35567f54aec80e8a5 /* Ellipsoid.cpp in Sources */,
+				67f7ab2307930e045bd9770e8fa14d20 /* EllipticFunction.cpp in Sources */,
+				072cb5fb938163f781b76c0bebf622b9 /* Geocentric.cpp in Sources */,
+				0a1468ef1f902c44edc4c5b1a4b0cbca /* GeoCoords.cpp in Sources */,
+				54d4b9478710974cf774be1af712ac40 /* Geodesic.cpp in Sources */,
+				a63c4b09a67a16e0a8235d696972531f /* GeodesicLine.cpp in Sources */,
+				5f02f6dd01e47241d8678e3d9768689d /* Geographic.pro in Sources */,
+				63be0cc32a88844236275f57ebf05a93 /* Geohash.cpp in Sources */,
+				20e01e8b3f2fddae9bef73e216fffe58 /* Geoid.cpp in Sources */,
+				e78027d4dab75b76e316692301662b44 /* Gnomonic.cpp in Sources */,
+				f68f2720bdf7bb4c8acf2fe1fd854b88 /* GravityCircle.cpp in Sources */,
+				a28ab25fbe42859fefc855fc948470ed /* GravityModel.cpp in Sources */,
+				a63b1931474d956a160c527bc2e69a1a /* LambertConformalConic.cpp in Sources */,
+				c35e7fd4e09c273bf738abbd12b4e167 /* LocalCartesian.cpp in Sources */,
+				98240cee2a4dfd62be424f7b5c11d6d4 /* MagneticCircle.cpp in Sources */,
+				205b39a7c9f13320a7b9b6ce3935e4a9 /* MagneticModel.cpp in Sources */,
+				271a7a55bff2407a804b87a92996e28a /* Makefile.am in Sources */,
+				98a3b430a963113edbaef35583521fd4 /* Makefile.in in Sources */,
+				254190f9d04e811c7c1528bc9024d3cf /* Makefile.mk in Sources */,
+				7a4986599d8f678a43d3e28de9bc1aeb /* MGRS.cpp in Sources */,
+				29b272019c30dfe0ed5051f50b3c971a /* NormalGravity.cpp in Sources */,
+				4a95d343af30ac357bbde88d16d36b58 /* OSGB.cpp in Sources */,
+				6b4ed8579565e811d97fb07dc74cc7bb /* PolarStereographic.cpp in Sources */,
+				1d0c2b892e9e35ac125821bf3a4ebb05 /* PolygonArea.cpp in Sources */,
+				4f63a5c1750e5b95d97fc094e05b4310 /* SphericalEngine.cpp in Sources */,
+				130b4386388fb6dbc064739dc34aed5d /* TransverseMercator.cpp in Sources */,
+				fe231c9084cb2f5e20acb4973562351b /* TransverseMercatorExact.cpp in Sources */,
+				d3c60da453f2bd8ca800e31b644bb374 /* Utility.cpp in Sources */,
+				8fb1217cc48bc81931f0f7010e9f8108 /* UTMUPS.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxGeoMag/libs,
+					../../../addons/ofxGeoMag/libs/GeographicLib,
+					../../../addons/ofxGeoMag/src,
+					../../../addons/ofxThread/libs,
+					../../../addons/ofxThread/src,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxGeoMag/libs,
+					../../../addons/ofxGeoMag/libs/GeographicLib,
+					../../../addons/ofxGeoMag/src,
+					../../../addons/ofxThread/libs,
+					../../../addons/ofxThread/src,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "GeomagneticTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "GeomagneticTexture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}
