@@ -61,7 +61,7 @@ public:
         while( isThreadRunning() != 0 ){
             if( lock() ){
                 // Serial Read Loop
-                if( serial.available() > 16 ){ //パケット長10バイトバッファにたまったら
+                if( serial.available() > 16 ){ //パケット長16バイトバッファにたまったら
                     int checkByte;
                     checkByte = serial.readByte();
                     if( 43 == checkByte ){

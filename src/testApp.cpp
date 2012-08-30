@@ -1,6 +1,6 @@
 #include "testApp.h"
 
-#define DEBUG 0
+#define DEBUG 1
 
 //#define TARGET_TEXTURE_WIDTH 410
 #define REF_TEXTURE_WIDTH 2160
@@ -20,6 +20,8 @@
 #define SOOTH_DIV_NUM 5
 
 #define SENSOR_MAG_MAX 340.0
+
+#define SCALE 0.66
 
 bool once;
 
@@ -126,7 +128,7 @@ void testApp::update(){
     
 #pragma mark - touched Mode
     if( isTouchedDeviceCount == 0 )isTouchedDevice = 0;
-    //isTouchedDevice=true;
+    isTouchedDevice=true;
     if(isTouchedDevice){
 
         /////////////////////////////////////
@@ -150,15 +152,18 @@ void testApp::update(){
 
 #pragma mark - calcurate Mag Device Hedding
         //koko 3D nisuru !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        double pitch, roll;//yaw;
+        double pitch, roll, yaw;
         
         pitch = atan( accelSensorControllX / sqrt( pow( accelSensorControllY, 2 ) + pow( accelSensorControllZ, 2 )) );// + ofDegToRad(90);
         roll = atan( accelSensorControllY / sqrt(pow( accelSensorControllX, 2 ) + pow( accelSensorControllZ, 2 ))  );// + ofDegToRad(90); // roll dake okashii
-        //yaw = atan( accelSensorControllZ / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
-        //ofMatrix3x3 dmc = rMatrixFromEulerAngles( roll, pitch, yaw );
+        //pitch = asin( -( accelSensorControllX / SENSOR_MAG_MAX ) );
+        //roll = asin( ( accelSensorControllY / SENSOR_MAG_MAX ) / cos(pitch));
         
-        //magDegree = calculate_heading( dmc ,sensorControllY, sensorControllX, sensorControllZ ) * ( 180 / M_PI );
-        magDegree = calculate_heading( pitch, roll ,sensorControllY, sensorControllX, sensorControllZ );
+        yaw = atan( accelSensorControllZ / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
+        ofMatrix3x3 dmc = rMatrixFromEulerAngles( roll, pitch, yaw );
+        
+        magDegree = calculate_heading( dmc ,sensorControllX, sensorControllY, sensorControllZ ) * ( 180 / M_PI );
+        //magDegree = calculate_heading( pitch, roll ,sensorControllX, sensorControllY, sensorControllZ );
 
         cout << "pitch : " << ofRadToDeg( pitch ) << " roll : " << ofRadToDeg( roll ) << endl;
 
@@ -180,13 +185,13 @@ void testApp::update(){
         if(refImage.bAllocated() && targetTex.bAllocated()){
             for(int i = 0; i< TARGET_TEXTURE_WIDTH; i++){
                 pixelReadX = i + centerOfPixelReadX;
-                if( pixelReadX < 0) { pixelReadX = pixelReadX + REF_TEXTURE_WIDTH; }; //dounuts mawarikomi map
-                if( pixelReadX > REF_TEXTURE_WIDTH ){ pixelReadX = pixelReadX - REF_TEXTURE_WIDTH; }; //dounuts mawarikomi map
+                if( pixelReadX < 0) { pixelReadX = pixelReadX + REF_TEXTURE_WIDTH; }; //doughnuts mawarikomi map
+                if( pixelReadX > REF_TEXTURE_WIDTH ){ pixelReadX = pixelReadX - REF_TEXTURE_WIDTH; }; //doughnuts mawarikomi map
                 
                 for(int j = 0; j< TARGET_TEXTURE_HEIGHT; j++){
                     pixelReadY = j + centerOfPixelReadY;
-                    if( pixelReadY < 0) { pixelReadY = - pixelReadY; }; //dounuts mawarikomi map
-                    if( pixelReadY > REF_TEXTURE_HEIGHT ){ pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) ; }; //dounuts mawarikomi map
+                    if( pixelReadY < 0) { pixelReadY = - pixelReadY; }; //doughnuts mawarikomi map
+                    if( pixelReadY > REF_TEXTURE_HEIGHT ){ pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) ; }; //doughnuts mawarikomi map
                     
                     pixelPointRead = pixelReadY * REF_TEXTURE_WIDTH + pixelReadX;
                     
@@ -270,14 +275,14 @@ double testApp::calculate_heading(const ofMatrix3x3 &dcm_matrix,double mag_x, do
     // 6/4/11 - added constrain to keep bad values from ruining DCM Yaw - Jason S.
     heading = constrain(atan2(-headY,headX), -3.15, 3.15);
 
-    return heading;
+    return ofDegToRad(360) - heading;
 }
 
 double testApp::calculate_heading( double pitch, double roll, double mag_x, double mag_y, double mag_z) {
     
     double xh = mag_x * cos(pitch) + mag_z * sin(pitch);
     double yh = mag_x * sin(roll) * sin(pitch) + mag_y * cos(roll) - mag_z * sin(roll) * cos(pitch);
-    double zh = -mag_x * cos(roll) * sin(pitch) + mag_y * sin(roll) + mag_z * cos(roll) * cos(pitch);
+    //double zh = -mag_x * cos(roll) * sin(pitch) + mag_y * sin(roll) + mag_z * cos(roll) * cos(pitch);
     
     float heading = 180 * atan2(yh, xh)/PI;
     if (yh >= 0)
@@ -358,7 +363,7 @@ void testApp::draw(){
     ofRect(1620, 0, 300, 1080);
     ofPopMatrix();
     ofSetColor(255, 255, 255);
-    //targetTex.draw(0,0);
+    targetTex.draw(0,0);
     
 #if DEBUG == 1
         drawDebugConsole();
