@@ -1,29 +1,93 @@
 #pragma once
 
 #include "ofMain.h"
+#import "SerialThreadedObject.h"
+#include "ofxCsv.h"
+#define MAX_NUM_OF_LOW 19999
 
 class testApp : public ofBaseApp{
-
-	public:
-		void setup();
-		void update();
-		void draw();
-
-		void keyPressed  (int key);
-		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-        void drawCross(int crossLnegth);
     
-    private:
-        ofImage geoMap;
-        ofTexture prceedMap;
-        vector<ofMesh> meshes;
-        unsigned char pPix[1980*1080*3];
-		
+public:
+    void setup();
+    void update();
+    void draw();
+    
+    void keyPressed  (int key);
+    void keyReleased(int key);
+    void mouseMoved(int x, int y );
+    void mouseDragged(int x, int y, int button);
+    void mousePressed(int x, int y, int button);
+    void mouseReleased(int x, int y, int button);
+    void windowResized(int w, int h);
+    double calculate_heading(const ofMatrix3x3 &dcm_matrix,double mag_x, double mag_y, double mag_z);
+    double calculate_heading( double pitch, double roll, double mag_x, double mag_y, double mag_z);
+    void dragEvent(ofDragInfo dragInfo);
+    void gotMessage(ofMessage msg);
+    void drawScaleLines();
+    void setupCsv();
+    void drawDebugConsole();
+    void drawCross(ofPoint point, int crossLnegth);
+    ofMatrix3x3 rMatrixFromEulerAngles(double Roll, double Pitch, double Yaw);
+    double constrain(double x, double a, double b);
+    
+private:
+    wng::ofxCsv csv;
+    ofImage refImage;
+    ofTexture targetTex;
+    
+    SerialThreadedObject STO;
+    
+    float sensorControllX;
+    float sensorControllY;
+    float sensorControllZ;
+    
+    float sensorPastValX;
+    float sensorPastValY;
+    float sensorPastValZ;
+    
+    float offsetSensorValX;
+    float offsetSensorValY;
+    float offsetSensorValZ;
+    
+    
+    float accelSensorControllX;
+    float accelSensorControllY;
+    float accelSensorControllZ;
+    
+    float accelSensorPastValX;
+    float accelSensorPastValY;
+    float accelSensorPastValZ;
+    
+    float accelOffsetSensorValX;
+    float accelOffsetSensorValY;
+    float accelOffsetSensorValZ;
+
+    float magDegree;
+    
+    int simReadTime;
+    
+    float xSimValue[MAX_NUM_OF_LOW];
+    float ySimValue[MAX_NUM_OF_LOW];
+    float zSimValue[MAX_NUM_OF_LOW];
+    float vlat[MAX_NUM_OF_LOW];
+    float vlon[MAX_NUM_OF_LOW];
+    float valt[MAX_NUM_OF_LOW];
+    
+    vector<ofPoint> crossPoint;
+    
+    
+    double friction;
+    double spring;
+    
+    double speedX;
+    double currentReadPosX ;
+    double nextReadPosX;
+    
+    double speedY;
+    double currentReadPosY;
+    double nextReadPosY;
+    
+    double speedInvadorPosture;
+    double currentInvadorPosture;
+    double nextInvadorPosture;
 };

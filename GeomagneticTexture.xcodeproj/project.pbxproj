@@ -32,6 +32,39 @@
 		8fb1217cc48bc81931f0f7010e9f8108 /* UTMUPS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8f5cf56823944e6aebdd3be2beeb801a /* UTMUPS.cpp */; };
 		98240cee2a4dfd62be424f7b5c11d6d4 /* MagneticCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9babd8dd2d56124847b807f1fa86fc36 /* MagneticCircle.cpp */; };
 		98a3b430a963113edbaef35583521fd4 /* Makefile.in in Sources */ = {isa = PBXBuildFile; fileRef = 16aa091ebdbe5af97c43d745ed2f315c /* Makefile.in */; };
+		B223746815EA3B7D00B6D480 /* ofxCsv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B223745F15EA3B7D00B6D480 /* ofxCsv.cpp */; };
+		B2CB2AB015DB6D6500E525CD /* ofxEasyCubeSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A7F15DB6D6500E525CD /* ofxEasyCubeSAT.cpp */; };
+		B2CB2AB115DB6D6500E525CD /* ofxInvaderSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8115DB6D6500E525CD /* ofxInvaderSAT.cpp */; };
+		B2CB2AB215DB6D6500E525CD /* ofxPrismSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8315DB6D6500E525CD /* ofxPrismSAT.cpp */; };
+		B2CB2AB315DB6D6500E525CD /* ofxSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8515DB6D6500E525CD /* ofxSAT.cpp */; };
+		B2CB2AB415DB6D6500E525CD /* ofxSATLocalDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8715DB6D6500E525CD /* ofxSATLocalDB.cpp */; };
+		B2CB2AB515DB6D6500E525CD /* ofxSATNakasukaLab.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8915DB6D6500E525CD /* ofxSATNakasukaLab.cpp */; };
+		B2CB2AB615DB6D6500E525CD /* ofxSATRemoteDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8B15DB6D6500E525CD /* ofxSATRemoteDB.cpp */; };
+		B2CB2AB715DB6D6500E525CD /* ofxSATTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8D15DB6D6500E525CD /* ofxSATTemplate.cpp */; };
+		B2CB2AB815DB6D6500E525CD /* ofxSATTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A8F15DB6D6500E525CD /* ofxSATTime.cpp */; };
+		B2CB2AB915DB6D6500E525CD /* ofxSATTimeDiff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A9115DB6D6500E525CD /* ofxSATTimeDiff.cpp */; };
+		B2CB2ABA15DB6D6500E525CD /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A9715DB6D6500E525CD /* sqlite3.c */; };
+		B2CB2ABB15DB6D6500E525CD /* ofxSQLite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A9A15DB6D6500E525CD /* ofxSQLite.cpp */; };
+		B2CB2ABC15DB6D6500E525CD /* ofxSQLiteAbstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A9C15DB6D6500E525CD /* ofxSQLiteAbstract.cpp */; };
+		B2CB2ABD15DB6D6500E525CD /* ofxSQLiteDelete.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2A9E15DB6D6500E525CD /* ofxSQLiteDelete.cpp */; };
+		B2CB2ABE15DB6D6500E525CD /* ofxSQLiteFieldValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AA015DB6D6500E525CD /* ofxSQLiteFieldValues.cpp */; };
+		B2CB2ABF15DB6D6500E525CD /* ofxSQLiteInsert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AA315DB6D6500E525CD /* ofxSQLiteInsert.cpp */; };
+		B2CB2AC015DB6D6500E525CD /* ofxSQLiteSelect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AA515DB6D6500E525CD /* ofxSQLiteSelect.cpp */; };
+		B2CB2AC115DB6D6500E525CD /* ofxSQLiteUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AA915DB6D6500E525CD /* ofxSQLiteUpdate.cpp */; };
+		B2CB2AC215DB6D6500E525CD /* ofxXiIVSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AAC15DB6D6500E525CD /* ofxXiIVSAT.cpp */; };
+		B2CB2AC315DB6D6500E525CD /* ofxXiVSAT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AAE15DB6D6500E525CD /* ofxXiVSAT.cpp */; };
+		B2CB2AD515DB6D6B00E525CD /* ofxSgp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AC515DB6D6B00E525CD /* ofxSgp.cpp */; };
+		B2CB2AD715DB6D6B00E525CD /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2ACC15DB6D6B00E525CD /* Makefile */; };
+		B2CB2AD815DB6D6B00E525CD /* sgp4sdp4.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2ACE15DB6D6B00E525CD /* sgp4sdp4.c */; };
+		B2CB2AD915DB6D6B00E525CD /* sgp_in.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AD015DB6D6B00E525CD /* sgp_in.c */; };
+		B2CB2ADA15DB6D6B00E525CD /* sgp_math.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AD115DB6D6B00E525CD /* sgp_math.c */; };
+		B2CB2ADB15DB6D6B00E525CD /* sgp_obs.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AD215DB6D6B00E525CD /* sgp_obs.c */; };
+		B2CB2ADC15DB6D6B00E525CD /* sgp_time.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AD315DB6D6B00E525CD /* sgp_time.c */; };
+		B2CB2ADD15DB6D6B00E525CD /* solar.c in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AD415DB6D6B00E525CD /* solar.c */; };
+		B2CB2AE715DB6D9D00E525CD /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AE015DB6D9D00E525CD /* tinyxml.cpp */; };
+		B2CB2AE815DB6D9D00E525CD /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AE215DB6D9D00E525CD /* tinyxmlerror.cpp */; };
+		B2CB2AE915DB6D9D00E525CD /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AE315DB6D9D00E525CD /* tinyxmlparser.cpp */; };
+		B2CB2AEA15DB6D9D00E525CD /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2CB2AE515DB6D9D00E525CD /* ofxXmlSettings.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -137,6 +170,78 @@
 		95ae9fbbbbd19c92495325bc70970cda /* CassiniSoldner.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = CassiniSoldner.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/CassiniSoldner.hpp; sourceTree = SOURCE_ROOT; };
 		98414a11dc267130ecc19b6cd0b159c9 /* PolarStereographic.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PolarStereographic.hpp; path = ../../../addons/ofxGeoMag/libs/GeographicLib/PolarStereographic.hpp; sourceTree = SOURCE_ROOT; };
 		9babd8dd2d56124847b807f1fa86fc36 /* MagneticCircle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MagneticCircle.cpp; path = ../../../addons/ofxGeoMag/src/MagneticCircle.cpp; sourceTree = SOURCE_ROOT; };
+		B223743415E8891600B6D480 /* SerialThreadedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThreadedObject.h; sourceTree = "<group>"; };
+		B223745F15EA3B7D00B6D480 /* ofxCsv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxCsv.cpp; sourceTree = "<group>"; };
+		B223746015EA3B7D00B6D480 /* ofxCsv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCsv.h; sourceTree = "<group>"; };
+		B2CB2A7D15DB6D6500E525CD /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
+		B2CB2A7E15DB6D6500E525CD /* ofxARTSATAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxARTSATAPI.h; sourceTree = "<group>"; };
+		B2CB2A7F15DB6D6500E525CD /* ofxEasyCubeSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasyCubeSAT.cpp; sourceTree = "<group>"; };
+		B2CB2A8015DB6D6500E525CD /* ofxEasyCubeSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxEasyCubeSAT.h; sourceTree = "<group>"; };
+		B2CB2A8115DB6D6500E525CD /* ofxInvaderSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxInvaderSAT.cpp; sourceTree = "<group>"; };
+		B2CB2A8215DB6D6500E525CD /* ofxInvaderSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxInvaderSAT.h; sourceTree = "<group>"; };
+		B2CB2A8315DB6D6500E525CD /* ofxPrismSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPrismSAT.cpp; sourceTree = "<group>"; };
+		B2CB2A8415DB6D6500E525CD /* ofxPrismSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPrismSAT.h; sourceTree = "<group>"; };
+		B2CB2A8515DB6D6500E525CD /* ofxSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSAT.cpp; sourceTree = "<group>"; };
+		B2CB2A8615DB6D6500E525CD /* ofxSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSAT.h; sourceTree = "<group>"; };
+		B2CB2A8715DB6D6500E525CD /* ofxSATLocalDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATLocalDB.cpp; sourceTree = "<group>"; };
+		B2CB2A8815DB6D6500E525CD /* ofxSATLocalDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATLocalDB.h; sourceTree = "<group>"; };
+		B2CB2A8915DB6D6500E525CD /* ofxSATNakasukaLab.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATNakasukaLab.cpp; sourceTree = "<group>"; };
+		B2CB2A8A15DB6D6500E525CD /* ofxSATNakasukaLab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATNakasukaLab.h; sourceTree = "<group>"; };
+		B2CB2A8B15DB6D6500E525CD /* ofxSATRemoteDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATRemoteDB.cpp; sourceTree = "<group>"; };
+		B2CB2A8C15DB6D6500E525CD /* ofxSATRemoteDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATRemoteDB.h; sourceTree = "<group>"; };
+		B2CB2A8D15DB6D6500E525CD /* ofxSATTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATTemplate.cpp; sourceTree = "<group>"; };
+		B2CB2A8E15DB6D6500E525CD /* ofxSATTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATTemplate.h; sourceTree = "<group>"; };
+		B2CB2A8F15DB6D6500E525CD /* ofxSATTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATTime.cpp; sourceTree = "<group>"; };
+		B2CB2A9015DB6D6500E525CD /* ofxSATTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATTime.h; sourceTree = "<group>"; };
+		B2CB2A9115DB6D6500E525CD /* ofxSATTimeDiff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSATTimeDiff.cpp; sourceTree = "<group>"; };
+		B2CB2A9215DB6D6500E525CD /* ofxSATTimeDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATTimeDiff.h; sourceTree = "<group>"; };
+		B2CB2A9315DB6D6500E525CD /* ofxSATType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSATType.h; sourceTree = "<group>"; };
+		B2CB2A9715DB6D6500E525CD /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		B2CB2A9815DB6D6500E525CD /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		B2CB2A9915DB6D6500E525CD /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
+		B2CB2A9A15DB6D6500E525CD /* ofxSQLite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLite.cpp; sourceTree = "<group>"; };
+		B2CB2A9B15DB6D6500E525CD /* ofxSQLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLite.h; sourceTree = "<group>"; };
+		B2CB2A9C15DB6D6500E525CD /* ofxSQLiteAbstract.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteAbstract.cpp; sourceTree = "<group>"; };
+		B2CB2A9D15DB6D6500E525CD /* ofxSQLiteAbstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteAbstract.h; sourceTree = "<group>"; };
+		B2CB2A9E15DB6D6500E525CD /* ofxSQLiteDelete.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteDelete.cpp; sourceTree = "<group>"; };
+		B2CB2A9F15DB6D6500E525CD /* ofxSQLiteDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteDelete.h; sourceTree = "<group>"; };
+		B2CB2AA015DB6D6500E525CD /* ofxSQLiteFieldValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteFieldValues.cpp; sourceTree = "<group>"; };
+		B2CB2AA115DB6D6500E525CD /* ofxSQLiteFieldValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteFieldValues.h; sourceTree = "<group>"; };
+		B2CB2AA215DB6D6500E525CD /* ofxSQLiteHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteHeaders.h; sourceTree = "<group>"; };
+		B2CB2AA315DB6D6500E525CD /* ofxSQLiteInsert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteInsert.cpp; sourceTree = "<group>"; };
+		B2CB2AA415DB6D6500E525CD /* ofxSQLiteInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteInsert.h; sourceTree = "<group>"; };
+		B2CB2AA515DB6D6500E525CD /* ofxSQLiteSelect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteSelect.cpp; sourceTree = "<group>"; };
+		B2CB2AA615DB6D6500E525CD /* ofxSQLiteSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteSelect.h; sourceTree = "<group>"; };
+		B2CB2AA715DB6D6500E525CD /* ofxSQLiteType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteType.h; sourceTree = "<group>"; };
+		B2CB2AA815DB6D6500E525CD /* ofxSQLiteTypeNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteTypeNow.h; sourceTree = "<group>"; };
+		B2CB2AA915DB6D6500E525CD /* ofxSQLiteUpdate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSQLiteUpdate.cpp; sourceTree = "<group>"; };
+		B2CB2AAA15DB6D6500E525CD /* ofxSQLiteUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteUpdate.h; sourceTree = "<group>"; };
+		B2CB2AAB15DB6D6500E525CD /* ofxSQLiteWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSQLiteWhere.h; sourceTree = "<group>"; };
+		B2CB2AAC15DB6D6500E525CD /* ofxXiIVSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXiIVSAT.cpp; sourceTree = "<group>"; };
+		B2CB2AAD15DB6D6500E525CD /* ofxXiIVSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXiIVSAT.h; sourceTree = "<group>"; };
+		B2CB2AAE15DB6D6500E525CD /* ofxXiVSAT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXiVSAT.cpp; sourceTree = "<group>"; };
+		B2CB2AAF15DB6D6500E525CD /* ofxXiVSAT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXiVSAT.h; sourceTree = "<group>"; };
+		B2CB2AC515DB6D6B00E525CD /* ofxSgp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSgp.cpp; sourceTree = "<group>"; };
+		B2CB2AC615DB6D6B00E525CD /* ofxSgp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSgp.h; sourceTree = "<group>"; };
+		B2CB2AC815DB6D6B00E525CD /* amateur.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = amateur.txt; sourceTree = "<group>"; };
+		B2CB2AC915DB6D6B00E525CD /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		B2CB2ACA15DB6D6B00E525CD /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		B2CB2ACB15DB6D6B00E525CD /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		B2CB2ACC15DB6D6B00E525CD /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		B2CB2ACD15DB6D6B00E525CD /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		B2CB2ACE15DB6D6B00E525CD /* sgp4sdp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sgp4sdp4.c; sourceTree = "<group>"; };
+		B2CB2ACF15DB6D6B00E525CD /* sgp4sdp4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sgp4sdp4.h; sourceTree = "<group>"; };
+		B2CB2AD015DB6D6B00E525CD /* sgp_in.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sgp_in.c; sourceTree = "<group>"; };
+		B2CB2AD115DB6D6B00E525CD /* sgp_math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sgp_math.c; sourceTree = "<group>"; };
+		B2CB2AD215DB6D6B00E525CD /* sgp_obs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sgp_obs.c; sourceTree = "<group>"; };
+		B2CB2AD315DB6D6B00E525CD /* sgp_time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sgp_time.c; sourceTree = "<group>"; };
+		B2CB2AD415DB6D6B00E525CD /* solar.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = solar.c; sourceTree = "<group>"; };
+		B2CB2AE015DB6D9D00E525CD /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		B2CB2AE115DB6D9D00E525CD /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		B2CB2AE215DB6D9D00E525CD /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		B2CB2AE315DB6D9D00E525CD /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		B2CB2AE515DB6D9D00E525CD /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		B2CB2AE615DB6D9D00E525CD /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -275,9 +380,172 @@
 			name = GeographicLib;
 			sourceTree = "<group>";
 		};
+		B223744C15EA3B7D00B6D480 /* ofxCsv */ = {
+			isa = PBXGroup;
+			children = (
+				B223745E15EA3B7D00B6D480 /* src */,
+			);
+			name = ofxCsv;
+			path = ../../../addons/ofxCsv;
+			sourceTree = "<group>";
+		};
+		B223745E15EA3B7D00B6D480 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B223745F15EA3B7D00B6D480 /* ofxCsv.cpp */,
+				B223746015EA3B7D00B6D480 /* ofxCsv.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B2CB2A7C15DB6D6500E525CD /* ARTSATAPI */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2A7D15DB6D6500E525CD /* Doxyfile */,
+				B2CB2A7E15DB6D6500E525CD /* ofxARTSATAPI.h */,
+				B2CB2A7F15DB6D6500E525CD /* ofxEasyCubeSAT.cpp */,
+				B2CB2A8015DB6D6500E525CD /* ofxEasyCubeSAT.h */,
+				B2CB2A8115DB6D6500E525CD /* ofxInvaderSAT.cpp */,
+				B2CB2A8215DB6D6500E525CD /* ofxInvaderSAT.h */,
+				B2CB2A8315DB6D6500E525CD /* ofxPrismSAT.cpp */,
+				B2CB2A8415DB6D6500E525CD /* ofxPrismSAT.h */,
+				B2CB2A8515DB6D6500E525CD /* ofxSAT.cpp */,
+				B2CB2A8615DB6D6500E525CD /* ofxSAT.h */,
+				B2CB2A8715DB6D6500E525CD /* ofxSATLocalDB.cpp */,
+				B2CB2A8815DB6D6500E525CD /* ofxSATLocalDB.h */,
+				B2CB2A8915DB6D6500E525CD /* ofxSATNakasukaLab.cpp */,
+				B2CB2A8A15DB6D6500E525CD /* ofxSATNakasukaLab.h */,
+				B2CB2A8B15DB6D6500E525CD /* ofxSATRemoteDB.cpp */,
+				B2CB2A8C15DB6D6500E525CD /* ofxSATRemoteDB.h */,
+				B2CB2A8D15DB6D6500E525CD /* ofxSATTemplate.cpp */,
+				B2CB2A8E15DB6D6500E525CD /* ofxSATTemplate.h */,
+				B2CB2A8F15DB6D6500E525CD /* ofxSATTime.cpp */,
+				B2CB2A9015DB6D6500E525CD /* ofxSATTime.h */,
+				B2CB2A9115DB6D6500E525CD /* ofxSATTimeDiff.cpp */,
+				B2CB2A9215DB6D6500E525CD /* ofxSATTimeDiff.h */,
+				B2CB2A9315DB6D6500E525CD /* ofxSATType.h */,
+				B2CB2A9415DB6D6500E525CD /* ofxSQLite */,
+				B2CB2AAC15DB6D6500E525CD /* ofxXiIVSAT.cpp */,
+				B2CB2AAD15DB6D6500E525CD /* ofxXiIVSAT.h */,
+				B2CB2AAE15DB6D6500E525CD /* ofxXiVSAT.cpp */,
+				B2CB2AAF15DB6D6500E525CD /* ofxXiVSAT.h */,
+			);
+			name = ARTSATAPI;
+			path = ../../../addons/ARTSATAPI;
+			sourceTree = "<group>";
+		};
+		B2CB2A9415DB6D6500E525CD /* ofxSQLite */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2A9515DB6D6500E525CD /* lib */,
+				B2CB2A9A15DB6D6500E525CD /* ofxSQLite.cpp */,
+				B2CB2A9B15DB6D6500E525CD /* ofxSQLite.h */,
+				B2CB2A9C15DB6D6500E525CD /* ofxSQLiteAbstract.cpp */,
+				B2CB2A9D15DB6D6500E525CD /* ofxSQLiteAbstract.h */,
+				B2CB2A9E15DB6D6500E525CD /* ofxSQLiteDelete.cpp */,
+				B2CB2A9F15DB6D6500E525CD /* ofxSQLiteDelete.h */,
+				B2CB2AA015DB6D6500E525CD /* ofxSQLiteFieldValues.cpp */,
+				B2CB2AA115DB6D6500E525CD /* ofxSQLiteFieldValues.h */,
+				B2CB2AA215DB6D6500E525CD /* ofxSQLiteHeaders.h */,
+				B2CB2AA315DB6D6500E525CD /* ofxSQLiteInsert.cpp */,
+				B2CB2AA415DB6D6500E525CD /* ofxSQLiteInsert.h */,
+				B2CB2AA515DB6D6500E525CD /* ofxSQLiteSelect.cpp */,
+				B2CB2AA615DB6D6500E525CD /* ofxSQLiteSelect.h */,
+				B2CB2AA715DB6D6500E525CD /* ofxSQLiteType.h */,
+				B2CB2AA815DB6D6500E525CD /* ofxSQLiteTypeNow.h */,
+				B2CB2AA915DB6D6500E525CD /* ofxSQLiteUpdate.cpp */,
+				B2CB2AAA15DB6D6500E525CD /* ofxSQLiteUpdate.h */,
+				B2CB2AAB15DB6D6500E525CD /* ofxSQLiteWhere.h */,
+			);
+			path = ofxSQLite;
+			sourceTree = "<group>";
+		};
+		B2CB2A9515DB6D6500E525CD /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2A9615DB6D6500E525CD /* sqlite */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		B2CB2A9615DB6D6500E525CD /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2A9715DB6D6500E525CD /* sqlite3.c */,
+				B2CB2A9815DB6D6500E525CD /* sqlite3.h */,
+				B2CB2A9915DB6D6500E525CD /* sqlite3ext.h */,
+			);
+			path = sqlite;
+			sourceTree = "<group>";
+		};
+		B2CB2AC415DB6D6B00E525CD /* ofxSgp */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2AC515DB6D6B00E525CD /* ofxSgp.cpp */,
+				B2CB2AC615DB6D6B00E525CD /* ofxSgp.h */,
+				B2CB2AC715DB6D6B00E525CD /* sgp4sdp4 */,
+			);
+			name = ofxSgp;
+			path = ../../../addons/ofxSgp;
+			sourceTree = "<group>";
+		};
+		B2CB2AC715DB6D6B00E525CD /* sgp4sdp4 */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2AC815DB6D6B00E525CD /* amateur.txt */,
+				B2CB2AC915DB6D6B00E525CD /* AUTHORS */,
+				B2CB2ACA15DB6D6B00E525CD /* COPYING */,
+				B2CB2ACB15DB6D6B00E525CD /* main.c */,
+				B2CB2ACC15DB6D6B00E525CD /* Makefile */,
+				B2CB2ACD15DB6D6B00E525CD /* README */,
+				B2CB2ACE15DB6D6B00E525CD /* sgp4sdp4.c */,
+				B2CB2ACF15DB6D6B00E525CD /* sgp4sdp4.h */,
+				B2CB2AD015DB6D6B00E525CD /* sgp_in.c */,
+				B2CB2AD115DB6D6B00E525CD /* sgp_math.c */,
+				B2CB2AD215DB6D6B00E525CD /* sgp_obs.c */,
+				B2CB2AD315DB6D6B00E525CD /* sgp_time.c */,
+				B2CB2AD415DB6D6B00E525CD /* solar.c */,
+			);
+			path = sgp4sdp4;
+			sourceTree = "<group>";
+		};
+		B2CB2ADE15DB6D9D00E525CD /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2ADF15DB6D9D00E525CD /* libs */,
+				B2CB2AE415DB6D9D00E525CD /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		B2CB2ADF15DB6D9D00E525CD /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2AE015DB6D9D00E525CD /* tinyxml.cpp */,
+				B2CB2AE115DB6D9D00E525CD /* tinyxml.h */,
+				B2CB2AE215DB6D9D00E525CD /* tinyxmlerror.cpp */,
+				B2CB2AE315DB6D9D00E525CD /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		B2CB2AE415DB6D9D00E525CD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B2CB2AE515DB6D9D00E525CD /* ofxXmlSettings.cpp */,
+				B2CB2AE615DB6D9D00E525CD /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				B223744C15EA3B7D00B6D480 /* ofxCsv */,
+				B2CB2ADE15DB6D9D00E525CD /* ofxXmlSettings */,
+				B2CB2AC415DB6D6B00E525CD /* ofxSgp */,
+				B2CB2A7C15DB6D6500E525CD /* ARTSATAPI */,
 				3506b1466498a5bf2a394809b3cd3b95 /* ofxGeoMag */,
 				f7445ce7f5355406b00131ea062b56d1 /* ofxThread */,
 			);
@@ -334,7 +602,6 @@
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
-				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
 				E4B69B5B0A3A1756003C02F2 /* GeomagneticTextureDebug.app */,
@@ -347,6 +614,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				B223743415E8891600B6D480 /* SerialThreadedObject.h */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -358,6 +627,7 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		cb6997f9b538d34811d20cb7cf442f61 /* src */ = {
@@ -540,6 +810,39 @@
 				fe231c9084cb2f5e20acb4973562351b /* TransverseMercatorExact.cpp in Sources */,
 				d3c60da453f2bd8ca800e31b644bb374 /* Utility.cpp in Sources */,
 				8fb1217cc48bc81931f0f7010e9f8108 /* UTMUPS.cpp in Sources */,
+				B2CB2AB015DB6D6500E525CD /* ofxEasyCubeSAT.cpp in Sources */,
+				B2CB2AB115DB6D6500E525CD /* ofxInvaderSAT.cpp in Sources */,
+				B2CB2AB215DB6D6500E525CD /* ofxPrismSAT.cpp in Sources */,
+				B2CB2AB315DB6D6500E525CD /* ofxSAT.cpp in Sources */,
+				B2CB2AB415DB6D6500E525CD /* ofxSATLocalDB.cpp in Sources */,
+				B2CB2AB515DB6D6500E525CD /* ofxSATNakasukaLab.cpp in Sources */,
+				B2CB2AB615DB6D6500E525CD /* ofxSATRemoteDB.cpp in Sources */,
+				B2CB2AB715DB6D6500E525CD /* ofxSATTemplate.cpp in Sources */,
+				B2CB2AB815DB6D6500E525CD /* ofxSATTime.cpp in Sources */,
+				B2CB2AB915DB6D6500E525CD /* ofxSATTimeDiff.cpp in Sources */,
+				B2CB2ABA15DB6D6500E525CD /* sqlite3.c in Sources */,
+				B2CB2ABB15DB6D6500E525CD /* ofxSQLite.cpp in Sources */,
+				B2CB2ABC15DB6D6500E525CD /* ofxSQLiteAbstract.cpp in Sources */,
+				B2CB2ABD15DB6D6500E525CD /* ofxSQLiteDelete.cpp in Sources */,
+				B2CB2ABE15DB6D6500E525CD /* ofxSQLiteFieldValues.cpp in Sources */,
+				B2CB2ABF15DB6D6500E525CD /* ofxSQLiteInsert.cpp in Sources */,
+				B2CB2AC015DB6D6500E525CD /* ofxSQLiteSelect.cpp in Sources */,
+				B2CB2AC115DB6D6500E525CD /* ofxSQLiteUpdate.cpp in Sources */,
+				B2CB2AC215DB6D6500E525CD /* ofxXiIVSAT.cpp in Sources */,
+				B2CB2AC315DB6D6500E525CD /* ofxXiVSAT.cpp in Sources */,
+				B2CB2AD515DB6D6B00E525CD /* ofxSgp.cpp in Sources */,
+				B2CB2AD715DB6D6B00E525CD /* Makefile in Sources */,
+				B2CB2AD815DB6D6B00E525CD /* sgp4sdp4.c in Sources */,
+				B2CB2AD915DB6D6B00E525CD /* sgp_in.c in Sources */,
+				B2CB2ADA15DB6D6B00E525CD /* sgp_math.c in Sources */,
+				B2CB2ADB15DB6D6B00E525CD /* sgp_obs.c in Sources */,
+				B2CB2ADC15DB6D6B00E525CD /* sgp_time.c in Sources */,
+				B2CB2ADD15DB6D6B00E525CD /* solar.c in Sources */,
+				B2CB2AE715DB6D9D00E525CD /* tinyxml.cpp in Sources */,
+				B2CB2AE815DB6D9D00E525CD /* tinyxmlerror.cpp in Sources */,
+				B2CB2AE915DB6D9D00E525CD /* tinyxmlparser.cpp in Sources */,
+				B2CB2AEA15DB6D9D00E525CD /* ofxXmlSettings.cpp in Sources */,
+				B223746815EA3B7D00B6D480 /* ofxCsv.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
