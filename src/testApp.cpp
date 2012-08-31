@@ -165,7 +165,7 @@ void testApp::update(){
         magDegree = calculate_heading( dmc ,sensorControllX, sensorControllY, sensorControllZ ) * ( 180 / M_PI );
         //magDegree = calculate_heading( pitch, roll ,sensorControllX, sensorControllY, sensorControllZ );
 
-        cout << "pitch : " << ofRadToDeg( pitch ) << " roll : " << ofRadToDeg( roll ) << endl;
+//        cout << "pitch : " << ofRadToDeg( pitch ) << " roll : " << ofRadToDeg( roll ) << endl;
 
         ///////////////////////////////////////////////////////
 
@@ -191,8 +191,10 @@ void testApp::update(){
                 for(int j = 0; j< TARGET_TEXTURE_HEIGHT; j++){
                     pixelReadY = j + centerOfPixelReadY;
                     if( pixelReadY < 0) { pixelReadY = - pixelReadY; }; //doughnuts mawarikomi map
-                    if( pixelReadY > REF_TEXTURE_HEIGHT ){ pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) - 1; }; //doughnuts mawarikomi map
-                    
+                    if( pixelReadY >= REF_TEXTURE_HEIGHT ){
+                        pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) - 1;
+                    }; //doughnuts mawarikomi map
+                        
                     pixelPointRead = pixelReadY * REF_TEXTURE_WIDTH + pixelReadX;
                     
                     //readpixels
@@ -343,6 +345,9 @@ void testApp::draw(){
         ofLine(0, 0, 0, 400);
         ofPopMatrix();
         
+        ofSetColor(255, 255, 255, localMapAlpha);
+        localMap.draw(0,0, 1620, 1080);
+        
     }
     ofPopMatrix();
     //---------------------------------------------------------------------------------------------------------------------
@@ -355,10 +360,10 @@ void testApp::draw(){
     ofRect(1620, 0, 300, 1080);
     ofPopMatrix();
     ofSetColor(255, 255, 255);
-    targetTex.draw(0,0);
     
 #if DEBUG == 1
-        drawDebugConsole();
+    targetTex.draw(0,0);
+    drawDebugConsole();
 #endif
 
 }
@@ -511,7 +516,7 @@ void testApp::drawDebugConsole(){
     ofDrawBitmapString( "accelSensorValueY : " + ofToString( accelSensorControllY ), 10,240);
     ofDrawBitmapString( "accelSensorValueZ : " + ofToString( accelSensorControllZ ), 10,250);
     
-    ofDrawBitmapString( "sim Time Count : " + ofToString( simReadTime ), 10,270);
+    ofDrawBitmapString( "sim Time Count : " + ofToString( localMapAlpha ), 10,270);
 
 }
 
