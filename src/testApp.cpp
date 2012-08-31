@@ -146,7 +146,7 @@ void testApp::update(){
         
         accelSensorControllX = ( STO.accelValueX - accelOffsetSensorValX ) * 0.15 + accelSensorPastValX * 0.85; //smoothing
         accelSensorControllY = ( STO.accelValueY - accelOffsetSensorValY ) * 0.15 + accelSensorPastValY * 0.85; //smoothing
-        accelSensorControllZ = ( STO.accelValueZ - SENSOR_MAG_MAX ) * 0.15 + accelSensorPastValZ * 0.85; //smoothing
+        accelSensorControllZ = ( STO.accelValueZ - accelOffsetSensorValZ ) * 0.15 + accelSensorPastValZ * 0.85; //smoothing
         
         
         accelSensorPastValX = accelSensorControllX;
