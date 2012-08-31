@@ -128,7 +128,7 @@ void testApp::update(){
     
 #pragma mark - touched Mode
     if( isTouchedDeviceCount == 0 )isTouchedDevice = 0;
-    isTouchedDevice=true;
+    //isTouchedDevice=true;
     if(isTouchedDevice){
 
         /////////////////////////////////////
@@ -182,8 +182,8 @@ void testApp::update(){
         
 #pragma mark - update Geo Map Texture
         
-        if(refImage.bAllocated() && targetTex.bAllocated()){
-            for(int i = 0; i< TARGET_TEXTURE_WIDTH; i++){
+        if( refImage.bAllocated() && targetTex.bAllocated() ){
+            for( int i = 0; i< TARGET_TEXTURE_WIDTH; i++ ){
                 pixelReadX = i + centerOfPixelReadX;
                 if( pixelReadX < 0) { pixelReadX = pixelReadX + REF_TEXTURE_WIDTH; }; //doughnuts mawarikomi map
                 if( pixelReadX > REF_TEXTURE_WIDTH ){ pixelReadX = pixelReadX - REF_TEXTURE_WIDTH; }; //doughnuts mawarikomi map
@@ -191,17 +191,9 @@ void testApp::update(){
                 for(int j = 0; j< TARGET_TEXTURE_HEIGHT; j++){
                     pixelReadY = j + centerOfPixelReadY;
                     if( pixelReadY < 0) { pixelReadY = - pixelReadY; }; //doughnuts mawarikomi map
-                    if( pixelReadY > REF_TEXTURE_HEIGHT ){ pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) ; }; //doughnuts mawarikomi map
+                    if( pixelReadY > REF_TEXTURE_HEIGHT ){ pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) - 1; }; //doughnuts mawarikomi map
                     
                     pixelPointRead = pixelReadY * REF_TEXTURE_WIDTH + pixelReadX;
-                    
-                    if(j == 0){
-                        pixelPointRead = (pixelReadY+1) * REF_TEXTURE_WIDTH + pixelReadX;
-                    }
-                    
-                    if(j == REF_TEXTURE_WIDTH - 1){
-                        pixelPointRead = (pixelReadY-1) * REF_TEXTURE_WIDTH + pixelReadX;
-                    }
                     
                     //readpixels
                     int r = refPix[ int(pixelPointRead) * 3 + 0 ];
@@ -359,7 +351,7 @@ void testApp::draw(){
     // wite rect mask
     ofPushMatrix();
     ofTranslate(0, 0);
-    ofSetColor(255,255,255);
+    ofSetColor(0 ,0, 0);
     ofRect(1620, 0, 300, 1080);
     ofPopMatrix();
     ofSetColor(255, 255, 255);
@@ -487,11 +479,11 @@ void testApp::setupCsv(){
 //--------------------------------------------------------------
 
 void testApp::drawDebugConsole(){
-    ofSetColor(255, 0, 0);
-    ofLine(0, 0, 0, 1080);
-    ofLine(0, 0, 0, 1080);
-    ofLine(1621, 0, 1621, 1080);
-    ofLine(0, 1080, 1620, 1080);
+//    ofSetColor(255, 0, 0);
+//    ofLine(0, 0, 0, 1080);
+//    ofLine(0, 0, 0, 1080);
+//    ofLine(1621, 0, 1621, 1080);
+//    ofLine(0, 1080, 1620, 1080);
     
     ofSetColor(255, 255, 255);
     ofDrawBitmapString("framerate ; " + ofToString( ofGetFrameRate() ) ,10,10);
