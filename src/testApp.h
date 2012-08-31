@@ -32,6 +32,7 @@ public:
     
 private:
     wng::ofxCsv csv;
+    ofImage localMap;
     ofImage refImage;
     ofTexture targetTex;
     
@@ -63,6 +64,7 @@ private:
     float accelOffsetSensorValZ;
 
     float magDegree;
+    float magDegreeBefore;
     
     int simReadTime;
     

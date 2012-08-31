@@ -1,6 +1,6 @@
 #include "testApp.h"
 
-#define DEBUG 1
+#define DEBUG 0
 
 //#define TARGET_TEXTURE_WIDTH 410
 #define REF_TEXTURE_WIDTH 2160
@@ -37,6 +37,8 @@ float dividWidthScalLon;
 int isTouchedDevice;
 int isTouchedDeviceCount;
 
+float localMapAlpha = 0;
+
 //--------------------------------------------------------------
 void testApp::setup(){
     
@@ -57,6 +59,7 @@ void testApp::setup(){
     
     once = true;
     refImage.loadImage("magFieldImage_smoothed_2160.png");
+    localMap.loadImage("localmap.png");
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
     
     setupCsv();
@@ -168,6 +171,13 @@ void testApp::update(){
 //        cout << "pitch : " << ofRadToDeg( pitch ) << " roll : " << ofRadToDeg( roll ) << endl;
 
         ///////////////////////////////////////////////////////
+        
+        magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;
+        float distanceDegree;
+        distanceDegree = magDegree - 180.0;
+        localMapAlpha = 255 - abs (255 - distanceDegree * 255.0 / 180.0 );
+        
+        magDegreeBefore = magDegree;
 
     } else {
         centerOfPixelReadX = ofMap( currentReadPosX , -180.0, 180.0, 0.0, 2160.0);
