@@ -17,11 +17,12 @@
 #define CSV_COL_NUMBER_GEO_COORDINATES 10
 #define FLOAT_NORMALISE_VALUE 1.0
 
-#define SOOTH_DIV_NUM 5
+#define SOOTH_DIV_NUM 10
 
-#define SENSOR_MAG_MAX 340.0
+#define SCALE_POINT_REPAT_NUM_WIDTH 23
+#define SCALE_POINT_REPAT_NUM_HEIGHT 18
 
-#define SCALE 0.66
+//#define SENSOR_MAG_MAX 340.0
 
 bool once;
 
@@ -79,8 +80,8 @@ void testApp::setup(){
     
     magDegree = 0 ;
     
-    for( int i=0; i< 23; i++ ){
-        for( int j = 0; j< 15; j++ ){
+    for( int i=0; i< SCALE_POINT_REPAT_NUM_WIDTH; i++ ){
+        for( int j = 0; j< SCALE_POINT_REPAT_NUM_HEIGHT; j++ ){
             crossPoint.push_back(ofPoint(i*270, j*270));
         }
     }
@@ -236,21 +237,21 @@ void testApp::update(){
     
 #pragma mark - update Coordinatioin Pint
     
-    for(int i =0; i < 23; i++){
-        for(int j = 0; j < 15; j++){
+    for(int i =0; i < SCALE_POINT_REPAT_NUM_WIDTH; i++){
+        for(int j = 0; j < SCALE_POINT_REPAT_NUM_HEIGHT; j++){
             double nextPointX = (i * 270 );
             double nextPointY = (j * 270 );
             
             nextPointX -= centerOfPixelReadX * 4;
             nextPointY -= centerOfPixelReadY * 3;
     
-            if( nextPointX < 1620 ){ nextPointX = nextPointX + 1620; };
-            if( nextPointX > 1620 ){ nextPointX = nextPointX - 1620; };
-            if( nextPointY < -270 ){ nextPointY = nextPointY + 1080; };
-            if( nextPointY > 1080 ){ nextPointY = nextPointY - 1080 - 540; };
+            if( nextPointX < 1620.0 ){ nextPointX = nextPointX + 1620.0; };
+            if( nextPointX > 1620.0 ){ nextPointX = nextPointX - 1620.0; };
+            if( nextPointY < -270.0 ){ nextPointY = nextPointY + 1350.0; };
+            if( nextPointY > 1080.0 ){ nextPointY = nextPointY - 1350.0; };
             
             crossPoint[j * 6 + i] .x = nextPointX;
-            crossPoint[j * 6 + i] .y = nextPointY + 540;
+            crossPoint[j * 6 + i] .y = nextPointY + 540.0;
         }
     }
 }
@@ -316,7 +317,7 @@ void testApp::draw(){
             float yPoint = (float)( targetPix[((int)(j * 6 * TARGET_TEXTURE_WIDTH +  i * 6 ) * 3 + 1) ] - 127) ;
             
             //powerPoint dicribe vector of magnetic value.
-            powerPoint = ofPoint( xPoint*1.13 , yPoint*1.13 );
+            powerPoint = ofPoint( xPoint , yPoint );
             
             ofPushMatrix();
             ofTranslate( i * 20 , j * 20 );
@@ -324,7 +325,7 @@ void testApp::draw(){
             //rotation makes a effect moire.
             ofRotateZ( currentInvadorPosture );
             ofSetLineWidth(0.5);
-//            ofSetColor( 50 );
+            //ofSetColor( 80 );
             ofSetColor(targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 0 ) ],
                        targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 1 ) ],
                        targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 2 ) ]
@@ -428,7 +429,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void testApp::drawScaleLines(){
-    
+    //right
     ofSetColor(255, 255, 255);
     ofSetLineWidth(1.0);
     ofLine( 1,1 ,1,10 );
@@ -439,24 +440,35 @@ void testApp::drawScaleLines(){
     }
     ofLine( 1620,0 ,1620,10 );
     
+    //top
     ofLine( 0,0 ,10,0 );
-    for(int i =0; i<69; i++){
+    for(int i =0; i<61; i++){
         int yPoint;
         yPoint = i * 18;
         ofLine(0,yPoint,10,yPoint);
     }
-    ofLine( 0, 1080 ,10,1080 );
+    ofLine( 0, 1079 ,10, 1079 );
     
+    //lefl
+    ofSetColor(255, 255, 255);
+    ofSetLineWidth(1.0);
+    ofLine( 1, 1080 ,1, 1070 );
+    for(int i =0; i<90; i++){
+        int xPoint;
+        xPoint = i * 18;
+        ofLine( xPoint, 1080 ,xPoint, 1070 );
+    }
+    ofLine( 1620, 1080 ,1620, 1070 );
+    
+    //follow with world map scale poit crrosses
     ofPushMatrix();
     ofSetLineWidth( 1.0f );
-    for(int i =0; i < 23; i++){
-        for(int j = 0; j < 15; j++){
+    for(int i =0; i < SCALE_POINT_REPAT_NUM_WIDTH; i++){
+        for(int j = 0; j < SCALE_POINT_REPAT_NUM_HEIGHT; j++){
             drawCross( crossPoint[j * 6 + i ], 7 );
         }
     }
     ofPopMatrix();
-
-
 }
 
 //--------------------------------------------------------------
@@ -533,8 +545,8 @@ void testApp::drawDebugConsole(){
 
 //--------------------------------------------------------------
 void testApp::drawCross(ofPoint point, int crossLnegth){
-    ofLine( point.x, -1 * crossLnegth + point.y, point.x, crossLnegth + point.y );
-    ofLine( -1 * crossLnegth + point.x, point.y, crossLnegth + point.x, point.y );
+    ofLine( point.x, -1 * crossLnegth + point.y - 540, point.x, crossLnegth + point.y - 540);
+    ofLine( -1 * crossLnegth + point.x, point.y - 540, crossLnegth + point.x, point.y - 540);
 }
 
 
