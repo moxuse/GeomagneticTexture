@@ -58,10 +58,17 @@ void testApp::setup(){
     currentInvadorPosture = 0;
     nextInvadorPosture = 0;
     
+    speedMagSensorZFlipSmooth = 0;
+    currentMagSensorZFlipSmooth = 0;
+    nextMagSensorZFlipSmooth = 0;
+    
     once = true;
     refImage.loadImage("magFieldImage_smoothed_2160.png");
     localMap.loadImage("localmap.png");
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
+    
+    invadorFont30.loadFont("font/HelveticaNeue.dfont", 30);
+    invadorFont16.loadFont("font/HelveticaNeue.dfont", 16);
     
     setupCsv();
     
@@ -119,6 +126,13 @@ void testApp::update(){
     speedInvadorPosture *= friction;
     currentInvadorPosture += speedInvadorPosture;
     
+    float springMagSensorZFlipSmooth;
+    springPosture = (nextMagSensorZFlipSmooth - currentMagSensorZFlipSmooth) * spring;
+    speedMagSensorZFlipSmooth += springMagSensorZFlipSmooth;
+    speedMagSensorZFlipSmooth *= friction;
+    currentMagSensorZFlipSmooth += speedMagSensorZFlipSmooth;
+
+    
     if(simReadTime>MAX_NUM_OF_LOW)simReadTime = 0;
     
 #pragma mark - increase Touch Sensor
@@ -156,24 +170,26 @@ void testApp::update(){
 
 #pragma mark - calcurate Mag Device Hedding
         //koko 3D nisuru !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+        nextMagSensorZFlipSmooth = accelSensorControllZ;
+        
         double pitch, roll, yaw;
         
-        pitch = atan( accelSensorControllX / sqrt( pow( accelSensorControllY, 2 ) + pow( accelSensorControllZ, 2 )) );// + ofDegToRad(90);
-        roll = atan( accelSensorControllY / sqrt(pow( accelSensorControllX, 2 ) + pow( accelSensorControllZ, 2 ))  );// + ofDegToRad(90); // roll dake okashii
+        pitch = atan( accelSensorControllX / sqrt( pow( accelSensorControllY, 2 ) + pow( currentMagSensorZFlipSmooth, 2 )) );// + ofDegToRad(90);
+        roll = atan( accelSensorControllY / sqrt(pow( accelSensorControllX, 2 ) + pow( currentMagSensorZFlipSmooth, 2 ))  );// + ofDegToRad(90); // roll dake okashii
         //pitch = asin( -( accelSensorControllX / SENSOR_MAG_MAX ) );
-        //roll = asin( ( accelSensorControllY / SENSOR_MAG_MAX ) / cos(pitch));
+        //roll = asin( ( currentMagSensorYFlipSmooth / SENSOR_MAG_MAX ) / cos(pitch));
         
-        yaw = atan( accelSensorControllZ / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
+        yaw = atan( currentMagSensorZFlipSmooth / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
         ofMatrix3x3 dmc = rMatrixFromEulerAngles( roll, pitch, yaw );
         
         magDegree = calculate_heading( dmc ,sensorControllX, sensorControllY, sensorControllZ ) * ( 180 / M_PI );
-        //magDegree = calculate_heading( pitch, roll ,sensorControllX, sensorControllY, sensorControllZ );
-
-//        cout << "pitch : " << ofRadToDeg( pitch ) << " roll : " << ofRadToDeg( roll ) << endl;
+        //magDegree = calculate_heading( pitch, roll ,sensorControllX, sensorControllY, sensorControllZ )
 
         ///////////////////////////////////////////////////////
         
-        magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;
+        //magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;
+//calculate_heading        if( 160 < magDegree && magDegree < 200 )magDegree = 180;
         float distanceDegree;
         distanceDegree = magDegree - 180.0;
         localMapAlpha = 255 - abs (255 - distanceDegree * 255.0 / 180.0 );
@@ -278,8 +294,8 @@ double testApp::calculate_heading(const ofMatrix3x3 &dcm_matrix,double mag_x, do
     headY = mag_y*dcm_matrix.i/cos_pitch - mag_z*dcm_matrix.f/cos_pitch;
     // magnetic heading
     // 6/4/11 - added constrain to keep bad values from ruining DCM Yaw - Jason S.
-    heading = constrain(atan2(-headY,headX), -3.15, 3.15);
-
+    //heading = constrain(atan2(-headY,headX), -3.15, 3.15);
+    heading = atan2(-headY,headX);
     return ofDegToRad(360) - heading;
 }
 
