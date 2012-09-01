@@ -388,13 +388,31 @@ void testApp::draw(){
     ofPopMatrix();
     ofSetColor(255, 255, 255);
     
+    drawConsole();
+    
 #if DEBUG == 1
-    targetTex.draw(0,0);
+  //  targetTex.draw(0,0);
     drawDebugConsole();
 #endif
 
 }
+//--------------------------------------------------------------
 
+void testApp::drawConsole() {
+    ofPushMatrix();
+    ofPushStyle();
+        ofTranslate(1620,1070);
+        ofRotate(-90, 0, 0, 1);
+#if DEBUG == 1
+        ofNoFill();
+        ofRect(0,0,1060,120);
+#endif
+        invadorFont30.drawString("this is HELEVETICA Neue 30pt 0123456789 +_ * ? / ", 0, 60);
+        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
+    ofPopStyle();
+    ofPopMatrix();
+
+}
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
     if('f' == key){

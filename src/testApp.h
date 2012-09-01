@@ -21,6 +21,7 @@ public:
     void windowResized(int w, int h);
     double calculate_heading(const ofMatrix3x3 &dcm_matrix,double mag_x, double mag_y, double mag_z);
     double calculate_heading( double pitch, double roll, double mag_x, double mag_y, double mag_z);
+    void drawConsole();
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     void drawScaleLines();
@@ -92,4 +93,14 @@ private:
     double speedInvadorPosture;
     double currentInvadorPosture;
     double nextInvadorPosture;
+    
+    double speedMagSensorZFlipSmooth;
+    double currentMagSensorZFlipSmooth;
+    double nextMagSensorZFlipSmooth;
+    
+    ofxXmlSettings xmlPreset;
+    
+    ofTrueTypeFont invadorFont30;
+    ofTrueTypeFont invadorFont16;
+
 };
