@@ -3,6 +3,8 @@
 #include "ofMain.h"
 #import "SerialThreadedObject.h"
 #include "ofxCsv.h"
+#include "ofxXmlSettings.h"
+
 #define MAX_NUM_OF_LOW 19999
 
 class testApp : public ofBaseApp{
@@ -100,7 +102,7 @@ private:
     
     ofxXmlSettings xmlPreset;
     
-    ofTrueTypeFont invadorFont30;
+    ofTrueTypeFont invadorFont24;
     ofTrueTypeFont invadorFont16;
 
 };

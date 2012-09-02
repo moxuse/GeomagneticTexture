@@ -67,7 +67,7 @@ void testApp::setup(){
     localMap.loadImage("localmap.png");
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
     
-    invadorFont30.loadFont("font/HelveticaNeue.dfont", 30);
+    invadorFont24.loadFont("font/HelveticaNeue.dfont", 24);
     invadorFont16.loadFont("font/HelveticaNeue.dfont", 16);
     
     setupCsv();
@@ -407,7 +407,7 @@ void testApp::drawConsole() {
         ofNoFill();
         ofRect(0,0,1060,120);
 #endif
-        invadorFont30.drawString("this is HELEVETICA Neue 30pt 0123456789 +_ * ? / ", 0, 60);
+        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 60);
         invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
     ofPopStyle();
     ofPopMatrix();
@@ -573,7 +573,6 @@ void testApp::drawDebugConsole(){
     ofDrawBitmapString( "accelSensorValueZ : " + ofToString( accelSensorControllZ ), 10,250);
     
     ofDrawBitmapString( "sim Time Count : " + ofToString( localMapAlpha ), 10,270);
-
 }
 
 
