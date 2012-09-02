@@ -63,12 +63,13 @@ void testApp::setup(){
     nextMagSensorZFlipSmooth = 0;
     
     once = true;
+    footerImage.loadImage("GT.tif");
     refImage.loadImage("magFieldImage_smoothed_2160.png");
     localMap.loadImage("localmap.png");
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
     
-    invadorFont24.loadFont("font/HelveticaNeue.dfont", 24);
-    invadorFont16.loadFont("font/HelveticaNeue.dfont", 16);
+    invadorFont24.loadFont("font/AvantGarde-Medium.otf", 24);
+    invadorFont16.loadFont("font/AvantGarde-Medium.otf", 16);
     
     setupCsv();
     
@@ -403,12 +404,13 @@ void testApp::drawConsole() {
     ofPushStyle();
         ofTranslate(1620,1070);
         ofRotate(-90, 0, 0, 1);
+        footerImage.draw(0,0);
 #if DEBUG == 1
         ofNoFill();
         ofRect(0,0,1060,120);
 #endif
         invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 60);
-        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
+//        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
     ofPopStyle();
     ofPopMatrix();
 

@@ -104,5 +104,7 @@ private:
     
     ofTrueTypeFont invadorFont24;
     ofTrueTypeFont invadorFont16;
+    
+    ofImage footerImage;
 
 };
