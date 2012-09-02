@@ -8,6 +8,7 @@
 #ifndef textureReadTest_SerialThreadedObject_h
 #define textureReadTest_SerialThreadedObject_h
 
+//#define SERIAL_DEVICE_PATH_NAME "tty.usbserial-A501DG5Z"
 #define SERIAL_DEVICE_PATH_NAME "tty.usbmodem1421"
 #define BAUD_RATE 57600
 #define TYPE_SERIAL_ERROR 9999
