@@ -32,6 +32,7 @@ public:
     void drawCross(ofPoint point, int crossLnegth);
     ofMatrix3x3 rMatrixFromEulerAngles(double Roll, double Pitch, double Yaw);
     double constrain(double x, double a, double b);
+    void changeDivSpeed();
     
 private:
     wng::ofxCsv csv;

@@ -17,12 +17,12 @@
 #define CSV_COL_NUMBER_GEO_COORDINATES 10
 #define FLOAT_NORMALISE_VALUE 1.0
 
-#define SOOTH_DIV_NUM 10
-
 #define SCALE_POINT_REPAT_NUM_WIDTH 23
 #define SCALE_POINT_REPAT_NUM_HEIGHT 18
 
 //#define SENSOR_MAG_MAX 340.0
+
+int smootDivNum = 2;
 
 bool once;
 
@@ -39,6 +39,8 @@ int isTouchedDevice;
 int isTouchedDeviceCount;
 
 float localMapAlpha = 0;
+
+bool monoColorMode = true;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -102,7 +104,7 @@ void testApp::update(){
     
 #pragma mark -smooth liner hokan by spring
     
-    if(ofGetFrameNum()%SOOTH_DIV_NUM==0){
+    if(ofGetFrameNum()%smootDivNum==0){
         simReadTime ++;
         nextReadPosX = vlat[simReadTime];
         nextReadPosY = vlon[simReadTime];
@@ -134,7 +136,14 @@ void testApp::update(){
     currentMagSensorZFlipSmooth += speedMagSensorZFlipSmooth;
 
     
-    if(simReadTime>MAX_NUM_OF_LOW)simReadTime = 0;
+    if(simReadTime>MAX_NUM_OF_LOW){
+        simReadTime = 0;
+        if( monoColorMode ){
+            monoColorMode = false;
+        } else {
+            monoColorMode = true;
+        }
+    }
     
 #pragma mark - increase Touch Sensor
     if( 0 == STO.touch ){
@@ -221,6 +230,9 @@ void testApp::update(){
                     if( pixelReadY < 0) { pixelReadY = - pixelReadY; }; //doughnuts mawarikomi map
                     if( pixelReadY >= REF_TEXTURE_HEIGHT ){
                         pixelReadY = REF_TEXTURE_HEIGHT - ( pixelReadY - REF_TEXTURE_HEIGHT ) - 1;
+                        if( 0 == i && 0 == j ){
+                            changeDivSpeed();
+                        }
                     }; //doughnuts mawarikomi map
                         
                     pixelPointRead = pixelReadY * REF_TEXTURE_WIDTH + pixelReadX;
@@ -317,9 +329,9 @@ double testApp::calculate_heading( double pitch, double roll, double mag_x, doub
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(0);
+    ofBackground(255);
     //ofSetColor(255, 255, 255);
-    ofSetColor(0, 0, 0);
+    ofSetColor(0);
     
     //read texture pixels from geomagnetic map and maek scala map
     
@@ -342,11 +354,14 @@ void testApp::draw(){
             //rotation makes a effect moire.
             ofRotateZ( currentInvadorPosture );
             ofSetLineWidth(0.5);
-            //ofSetColor( 80 );
-            ofSetColor(targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 0 ) ],
-                       targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 1 ) ],
-                       targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 2 ) ]
-                       );
+            if( monoColorMode ){
+                ofSetColor( 0 );
+            } else {
+                ofSetColor(targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 0 ) ],
+                           targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 1 ) ],
+                           targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 2 ) ]
+                           );
+            }
             ofLine( 0, powerPoint );
             ofPopMatrix();
         }
@@ -409,7 +424,7 @@ void testApp::drawConsole() {
         ofNoFill();
         ofRect(0,0,1060,120);
 #endif
-        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 60);
+//        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 60);
 //        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
     ofPopStyle();
     ofPopMatrix();
@@ -465,43 +480,51 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void testApp::drawScaleLines(){
-    //right
-    ofSetColor(255, 255, 255);
-    ofSetLineWidth(1.0);
-    ofLine( 1,1 ,1,10 );
-    for(int i =0; i<90; i++){
-        int xPoint;
-        xPoint = i * 18;
-        ofLine( xPoint,0 ,xPoint,10 );
-    }
-    ofLine( 1620,0 ,1620,10 );
     
-    //top
-    ofLine( 0,0 ,10,0 );
-    for(int i =0; i<61; i++){
-        int yPoint;
-        yPoint = i * 18;
-        ofLine(0,yPoint,10,yPoint);
-    }
-    ofLine( 0, 1079 ,10, 1079 );
+    ofSetColor( 255, 0, 0 );
+    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
+    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
     
-    //lefl
-    ofSetColor(255, 255, 255);
-    ofSetLineWidth(1.0);
-    ofLine( 1, 1080 ,1, 1070 );
-    for(int i =0; i<90; i++){
-        int xPoint;
-        xPoint = i * 18;
-        ofLine( xPoint, 1080 ,xPoint, 1070 );
-    }
-    ofLine( 1620, 1080 ,1620, 1070 );
+    ofLine(0, ofMap(currentReadPosY, -90,90,0,1080) * 3 + 1620, 1620, ofMap(currentReadPosY, -90,90,0,1080) * 3 + 1620);
+    ofLine(0, ofMap(currentReadPosY, -90,90,0,1080) * 3 - 1620, 1620, ofMap(currentReadPosY, -90,90,0,1080) * 3 - 1620);
+    
+//    //right
+//    ofSetColor(255, 255, 255);
+//    ofSetLineWidth(1.0);
+//    ofLine( 1,1 ,1,10 );
+//    for(int i =0; i<90; i++){
+//        int xPoint;
+//        xPoint = i * 18;
+//        ofLine( xPoint,0 ,xPoint,10 );
+//    }
+//    ofLine( 1620,0 ,1620,10 );
+//    
+//    //top
+//    ofLine( 0,0 ,10,0 );
+//    for(int i =0; i<61; i++){
+//        int yPoint;
+//        yPoint = i * 18;
+//        ofLine(0,yPoint,10,yPoint);
+//    }
+//    ofLine( 0, 1079 ,10, 1079 );
+//    
+//    //lefl
+//    ofSetColor(255, 255, 255);
+//    ofSetLineWidth(1.0);
+//    ofLine( 1, 1080 ,1, 1070 );
+//    for(int i =0; i<90; i++){
+//        int xPoint;
+//        xPoint = i * 18;
+//        ofLine( xPoint, 1080 ,xPoint, 1070 );
+//    }
+//    ofLine( 1620, 1080 ,1620, 1070 );
     
     //follow with world map scale poit crrosses
     ofPushMatrix();
     ofSetLineWidth( 1.0f );
     for(int i =0; i < SCALE_POINT_REPAT_NUM_WIDTH; i++){
         for(int j = 0; j < SCALE_POINT_REPAT_NUM_HEIGHT; j++){
-            drawCross( crossPoint[j * 6 + i ], 7 );
+            drawCross( crossPoint[j * 6 + i ], 540 );
         }
     }
     ofPopMatrix();
@@ -580,6 +603,7 @@ void testApp::drawDebugConsole(){
 
 //--------------------------------------------------------------
 void testApp::drawCross(ofPoint point, int crossLnegth){
+    ofSetColor(0, 0, 0);
     ofLine( point.x, -1 * crossLnegth + point.y - 540, point.x, crossLnegth + point.y - 540);
     ofLine( -1 * crossLnegth + point.x, point.y - 540, crossLnegth + point.x, point.y - 540);
 }
@@ -618,4 +642,26 @@ double testApp::constrain(double x, double a, double b) {
     }
     else
         return x;
+}
+
+//--------------------------------------------------------------
+
+void testApp::changeDivSpeed(){
+    
+    int randomMatter;
+    cout << "changed!!!!!!!!!!!!!! : " << ofToString(randomMatter) <<endl;
+    randomMatter = int(ofRandom(4));
+    switch (randomMatter) {
+        case 0:
+            smootDivNum = 14;
+            break;
+        case 1:
+            smootDivNum = 10;
+            break;
+        case 2:
+            smootDivNum = 5;
+            break;
+        default:
+            break;
+    }
 }
