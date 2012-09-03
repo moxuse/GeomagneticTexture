@@ -9,7 +9,7 @@
 #define TARGET_TEXTURE_HEIGHT 360
 #define HEADER_PIXEL_NUM 300
 
-#define TOUCH_COUNT_FRAME_NUM 600
+#define TOUCH_COUNT_FRAME_NUM 150
 
 //#define GEO_MAG_DEGREE_OFFSET_NORTH 12.0
 
@@ -22,9 +22,9 @@
 
 //#define SENSOR_MAG_MAX 340.0
 
-int smootDivNum = 8;
+float iccOffsetDegre = -120.0;
 
-bool once;
+int smootDivNum = 8;
 
 unsigned char *refPix;
 unsigned char targetPix[ TARGET_TEXTURE_WIDTH * TARGET_TEXTURE_HEIGHT * 3 ];
@@ -47,8 +47,8 @@ int rulerRefernceDegreeY[24] = {75,60,45,30,15,0,-15,-30,-45,-60,-75,-90,-75,-60
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
-    friction = 0.1;
+   // ofSetFullscreen(true);
+    friction = 0.05;
     spring = 0.5;
     
     speedX = 0;
@@ -74,7 +74,7 @@ void testApp::setup(){
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
     
     invadorFont24.loadFont("font/AvantGarde-Medium.otf", 24);
-    invadorFont16.loadFont("font/AvantGarde-Medium.otf", 16);
+    invadorFont12.loadFont("font/AvantGarde-Medium.otf", 16);
     
     setupCsv();
     
@@ -105,12 +105,25 @@ void testApp::setup(){
     for(int i = 0 ; i< 24; i++){
         rulerNodeY[i].setup();
     }
+    resetGraphArray();
+    
+    ofHideCursor();
     
     STO.start();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    if( once && ofGetFrameNum() > 100 ){
+        offsetSensorValX = STO.xValue;
+        offsetSensorValY = STO.yValue;
+        offsetSensorValZ = STO.zValue;
+        accelOffsetSensorValX = STO.accelValueX;
+        accelOffsetSensorValY = STO.accelValueY;
+        //accelOffsetSensorValZ = STO.accelValueZ * (-1);
+        once = false;
+    }
     
 #pragma mark -smooth liner hokan by spring
     
@@ -157,7 +170,10 @@ void testApp::update(){
 #pragma mark - increase Touch Sensor
     if( 0 == STO.touch ){
         isTouchedDeviceCount--;
-        if(isTouchedDeviceCount < 0 )isTouchedDeviceCount = 0;
+        if(isTouchedDeviceCount < 0 ){
+            isTouchedDeviceCount = 0;
+            resetGraphArray();
+        };
     } else {
         isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
         isTouchedDevice = 1;
@@ -167,7 +183,7 @@ void testApp::update(){
     if( isTouchedDeviceCount == 0 )isTouchedDevice = 0;
     //isTouchedDevice=true;
     if(isTouchedDevice){
-
+        
         /////////////////////////////////////
         
         sensorControllX = ( STO.xValue - offsetSensorValX ) * 0.15 + sensorPastValX * 0.85; //smoothing
@@ -263,15 +279,6 @@ void testApp::update(){
     
     targetTex.loadData(targetPix, TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
     
-    if( once && ofGetFrameNum() > 10 ){
-        offsetSensorValX = STO.xValue;
-        offsetSensorValY = STO.yValue;
-        offsetSensorValZ = STO.zValue;
-        accelOffsetSensorValX = STO.accelValueX;
-        accelOffsetSensorValY = STO.accelValueY;
-        //accelOffsetSensorValZ = STO.accelValueZ * (-1);
-        once = false;
-    }
     
 #pragma mark - update Coordinatioin Pint
     
@@ -292,6 +299,18 @@ void testApp::update(){
             crossPoint[j * 6 + i] .y = nextPointY + 540.0;
         }
     }
+#pragma mark update Array
+    if(isTouchedDevice){
+        for(int i = 1078; i>=1 ; i--){
+            grphMagArrayX[i] = grphMagArrayX[i-1];
+            grphMagArrayY[i] = grphMagArrayY[i-1];
+            grphMagArrayZ[i] = grphMagArrayZ[i-1];
+        }
+        grphMagArrayX[0] = sensorControllX * 0.1;
+        grphMagArrayY[0] = sensorControllY * 0.1;
+        grphMagArrayZ[0] = sensorControllZ * 0.1;
+    }
+    
 }
 //--------------------------------------------------------------
 
@@ -360,10 +379,10 @@ void testApp::draw(){
             float yPoint = (float)( targetPix[((int)(j * 6 * TARGET_TEXTURE_WIDTH +  i * 6 ) * 3 + 1) ] - 127) ;
             
             //powerPoint dicribe vector of magnetic value.
-            powerPoint = ofPoint( xPoint , yPoint );
+            powerPoint = ofPoint( xPoint *0.8, yPoint*0.8 );
             
             ofPushMatrix();
-            ofTranslate( (i - 4) * 20 , (j - 2) * 20 );
+            ofTranslate( (i - 4) * 16 , (j - 2) * 16 );
             
             //rotation makes a effect moire.
             ofRotateZ( currentInvadorPosture );
@@ -392,14 +411,31 @@ void testApp::draw(){
         ofSetColor(0, 0, 0, 205);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
         ofPushMatrix();
-        ofTranslate( ofGetWidth() / 2, ofGetHeight() / 2 );
-        ofRotate( magDegree, 0, 0, 1);
-        ofSetColor(255);
-        ofLine(0, 0, 0, 400);
+            ofTranslate( 1620 / 2 , ofGetHeight() / 2 );
+            ofRotate( magDegree, 0, 0, 1);
+            ofRotate( -140, 0, 0, 1);
+            ofSetColor(255);
+            ofLine(0, 0, 0, 400);
         ofPopMatrix();
         
         ofSetColor(255, 255, 255, localMapAlpha);
         localMap.draw(0,0, 1620, 1080);
+        
+        ofPushStyle();
+            ofNoFill();
+            ofSetColor(255, 0, 0);
+            for(int i = 1;i<1080; i++){
+                ofLine( 1600 - grphMagArrayX[i], i , 1600 - grphMagArrayX[i-1], i - 1);
+            }
+            ofSetColor(255, 255, 0);
+            for(int i = 1;i<1080; i++){
+                ofLine( 1600 - grphMagArrayY[i], i , 1600 - grphMagArrayY[i-1], i - 1);
+            }
+            ofSetColor(0, 255, 255);
+            for(int i = 1;i<1080; i++){
+                ofLine( 1600 - grphMagArrayZ[i], i , 1600 - grphMagArrayZ[i-1], i - 1);
+            }
+        ofPopStyle();
         
     }
     ofPopMatrix();
@@ -431,11 +467,19 @@ void testApp::drawConsole() {
         ofRotate(-90, 0, 0, 1);
         footerImage.draw(0,0);
 #if DEBUG == 1
-        ofNoFill();
-        ofRect(0,0,1060,120);
+//        ofNoFill();
+//        ofRect(0,0,1060,120);
 #endif
-        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360);
-//        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
+    if(monoColorMode){
+        ofSetColor(0);
+    }
+    
+
+        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360); // this is dummy, do not commentout.
+    if(!isTouchedDevice){    
+        invadorFont12.drawString("Latitude : " + ofToString( currentReadPosX ), 540, 1230);
+        invadorFont12.drawString("Longtitude : " + ofToString( (currentReadPosY * 3) ), 540, 1260);
+    }
     ofPopStyle();
     ofPopMatrix();
 
@@ -543,7 +587,7 @@ void testApp::drawScaleLines(){
     
     for(int i = 0 ; i< 24; i++){
         int currentMajor = ofMap(currentReadPosY, -90,90,0,1080) * 3 - ( 270 * i ) - 306;
-        rulerNodeY[i].setPosition(0, currentMajor % 6480, 0 );
+        rulerNodeY[i].setPosition(1600, currentMajor % 6480, 0 );
         rulerNodeY[i].customDraw( ofToString( rulerRefernceDegreeY[i] ), monoColorMode);
     }
     
@@ -627,11 +671,11 @@ void testApp::drawDebugConsole(){
 
 //--------------------------------------------------------------
 void testApp::drawCross(ofPoint point, int crossLnegth){
-    if(monoColorMode){
+//    if(monoColorMode){
         ofSetColor(0, 0, 0);
-    } else {
-        ofSetColor(255, 255, 255);
-    }
+//    } else {
+//        ofSetColor(255, 255, 255);
+//    }
     ofLine( point.x, -1 * crossLnegth + point.y - 540, point.x, crossLnegth + point.y - 540);
     ofLine( -1 * crossLnegth + point.x, point.y - 540, crossLnegth + point.x, point.y - 540);
 }
@@ -677,7 +721,6 @@ double testApp::constrain(double x, double a, double b) {
 void testApp::changeDivSpeed(){
     int randomInt;
     randomInt = int(ofRandom(4));
-   // cout << "changed!!!!!!!!!!!!!! : " << ofToString(randomInt) <<endl;
     switch (randomInt) {
         case 0:
             smootDivNum = 14;
@@ -690,5 +733,13 @@ void testApp::changeDivSpeed(){
             break;
         default:
             break;
+    }
+}
+
+void testApp::resetGraphArray(){
+    for(int i = 0; i< 1080;i++){
+        grphMagArrayX[i] = 0;
+        grphMagArrayY[i] = 0;
+        grphMagArrayZ[i] = 0;
     }
 }

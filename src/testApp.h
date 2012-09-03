@@ -34,8 +34,9 @@ public:
     ofMatrix3x3 rMatrixFromEulerAngles(double Roll, double Pitch, double Yaw);
     double constrain(double x, double a, double b);
     void changeDivSpeed();
-    
+    void resetGraphArray();
 private:
+    bool once;
     wng::ofxCsv csv;
     ofImage localMap;
     ofImage refImage;
@@ -104,11 +105,15 @@ private:
     ofxXmlSettings xmlPreset;
     
     ofTrueTypeFont invadorFont24;
-    ofTrueTypeFont invadorFont16;
+    ofTrueTypeFont invadorFont12;
     
     ofImage footerImage;
     
     RulerTextNode rulerNodeX[25];
     RulerTextNode rulerNodeY[24];
+
+    float grphMagArrayX[1080];
+    float grphMagArrayY[1080];
+    float grphMagArrayZ[1080];
 
 };
