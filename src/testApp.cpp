@@ -2,12 +2,12 @@
 
 #define DEBUG 0
 
-//#define TARGET_TEXTURE_WIDTH 410
+
 #define REF_TEXTURE_WIDTH 2160
 #define TARGET_TEXTURE_WIDTH 540
-//#define TARGET_TEXTURE_HEIGHT 220
 #define REF_TEXTURE_HEIGHT 1080
 #define TARGET_TEXTURE_HEIGHT 360
+#define HEADER_PIXEL_NUM 300
 
 #define TOUCH_COUNT_FRAME_NUM 600
 
@@ -22,7 +22,7 @@
 
 //#define SENSOR_MAG_MAX 340.0
 
-int smootDivNum = 2;
+int smootDivNum = 8;
 
 bool once;
 
@@ -40,7 +40,10 @@ int isTouchedDeviceCount;
 
 float localMapAlpha = 0;
 
-bool monoColorMode = true;
+bool monoColorMode = false;
+
+int rulerRefernceDegreeX[48] = {90,75,60,45,30,15,0,-15,-30,-45,-60,-75,-90,-105,-120,-135,-150,-165,-180,-165,-150,-135,-120,-105,-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90,105,120,135,150,165,180,165,150,135,120,105};
+int rulerRefernceDegreeY[24] = {75,60,45,30,15,0,-15,-30,-45,-60,-75,-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90};
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -80,7 +83,6 @@ void testApp::setup(){
     
     refPix = refImage.getPixels();
     
-    
     isTouchedDevice = 0;
     isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
     
@@ -95,12 +97,20 @@ void testApp::setup(){
             crossPoint.push_back(ofPoint(i*270, j*270));
         }
     }
+    
+    for(int i = 0 ; i< 48; i++){
+        rulerNodeX[i].setup();
+    }
+    
+    for(int i = 0 ; i< 24; i++){
+        rulerNodeY[i].setup();
+    }
+    
     STO.start();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
     
 #pragma mark -smooth liner hokan by spring
     
@@ -135,8 +145,7 @@ void testApp::update(){
     speedMagSensorZFlipSmooth *= friction;
     currentMagSensorZFlipSmooth += speedMagSensorZFlipSmooth;
 
-    
-    if(simReadTime>MAX_NUM_OF_LOW){
+    if( simReadTime > MAX_NUM_OF_LOW ){
         simReadTime = 0;
         if( monoColorMode ){
             monoColorMode = false;
@@ -198,11 +207,12 @@ void testApp::update(){
 
         ///////////////////////////////////////////////////////
         
-        //magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;
-//calculate_heading        if( 160 < magDegree && magDegree < 200 )magDegree = 180;
-        float distanceDegree;
-        distanceDegree = magDegree - 180.0;
-        localMapAlpha = 255 - abs (255 - distanceDegree * 255.0 / 180.0 );
+        //magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;//calculate_heading
+        //if( 160 < magDegree && magDegree < 200 )magDegree = 180;
+
+        float distDegree;
+        distDegree = magDegree - 180.0;
+        localMapAlpha = 255 - abs (255 - distDegree * 255.0 / 180.0 );
         
         magDegreeBefore = magDegree;
 
@@ -246,7 +256,6 @@ void testApp::update(){
                     targetPix[ ( j * TARGET_TEXTURE_WIDTH +i ) * 3 + 0 ] = r;
                     targetPix[ ( j * TARGET_TEXTURE_WIDTH +i ) * 3 + 1 ] = g;
                     targetPix[ ( j * TARGET_TEXTURE_WIDTH +i ) * 3 + 2 ] = b;
-
                 }
             }
         }
@@ -329,7 +338,12 @@ double testApp::calculate_heading( double pitch, double roll, double mag_x, doub
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(255);
+    ofTranslate(HEADER_PIXEL_NUM, 0);
+    if(monoColorMode){
+        ofBackground(255);
+    } else {
+        ofBackground(0);
+    }
     //ofSetColor(255, 255, 255);
     ofSetColor(0);
     
@@ -349,7 +363,7 @@ void testApp::draw(){
             powerPoint = ofPoint( xPoint , yPoint );
             
             ofPushMatrix();
-            ofTranslate( i * 20 , j * 20 );
+            ofTranslate( (i - 4) * 20 , (j - 2) * 20 );
             
             //rotation makes a effect moire.
             ofRotateZ( currentInvadorPosture );
@@ -366,13 +380,9 @@ void testApp::draw(){
             ofPopMatrix();
         }
     }
-
-
-
 #pragma mark - drawScaleLines
     
     drawScaleLines();
-    
     
 #pragma mark - device touched mode
     // device touched mode -----------------------------------------------------------------------------------------------
@@ -400,7 +410,7 @@ void testApp::draw(){
     ofPushMatrix();
     ofTranslate(0, 0);
     ofSetColor(0 ,0, 0);
-    ofRect(1620, 0, 300, 1080);
+    ofRect(0, 0, -HEADER_PIXEL_NUM, 1080);
     ofPopMatrix();
     ofSetColor(255, 255, 255);
     
@@ -417,14 +427,14 @@ void testApp::draw(){
 void testApp::drawConsole() {
     ofPushMatrix();
     ofPushStyle();
-        ofTranslate(1620,1070);
+        ofTranslate(-HEADER_PIXEL_NUM,1080);
         ofRotate(-90, 0, 0, 1);
         footerImage.draw(0,0);
 #if DEBUG == 1
         ofNoFill();
         ofRect(0,0,1060,120);
 #endif
-//        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 60);
+        invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360);
 //        invadorFont16.drawString("this is HELEVETICA Neue 16pt 0123456789 +_ * ? / ", 0, 80);
     ofPopStyle();
     ofPopMatrix();
@@ -481,13 +491,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 //--------------------------------------------------------------
 void testApp::drawScaleLines(){
     
-    ofSetColor( 255, 0, 0 );
-    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
-    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
-    
-    ofLine(0, ofMap(currentReadPosY, -90,90,0,1080) * 3 + 1620, 1620, ofMap(currentReadPosY, -90,90,0,1080) * 3 + 1620);
-    ofLine(0, ofMap(currentReadPosY, -90,90,0,1080) * 3 - 1620, 1620, ofMap(currentReadPosY, -90,90,0,1080) * 3 - 1620);
-    
 //    //right
 //    ofSetColor(255, 255, 255);
 //    ofSetLineWidth(1.0);
@@ -528,6 +531,27 @@ void testApp::drawScaleLines(){
         }
     }
     ofPopMatrix();
+    
+    ofSetColor( 255, 0, 0 );
+    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
+    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
+    
+    ofLine(0, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 + 1620, 1620, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 + 1620);
+    ofLine(0, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 - 1620, 1620, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 - 1620);
+    
+    //draw ruler numbers
+    
+    for(int i = 0 ; i< 24; i++){
+        int currentMajor = ofMap(currentReadPosY, -90,90,0,1080) * 3 - ( 270 * i ) - 306;
+        rulerNodeY[i].setPosition(0, currentMajor % 6480, 0 );
+        rulerNodeY[i].customDraw( ofToString( rulerRefernceDegreeY[i] ), monoColorMode);
+    }
+    
+    for(int i = 0 ; i< 48; i++){
+        int currentMajor = ofMap( currentReadPosX , -180.0, 180.0, 0.0, 2160.0) * 4 - ( 270 * i ) - 253;
+        rulerNodeX[i].setPosition( -currentMajor % 12960, 1046, 0 );
+        rulerNodeX[i].customDraw( ofToString( rulerRefernceDegreeX[i] ), monoColorMode);
+    }
 }
 
 //--------------------------------------------------------------
@@ -603,7 +627,11 @@ void testApp::drawDebugConsole(){
 
 //--------------------------------------------------------------
 void testApp::drawCross(ofPoint point, int crossLnegth){
-    ofSetColor(0, 0, 0);
+    if(monoColorMode){
+        ofSetColor(0, 0, 0);
+    } else {
+        ofSetColor(255, 255, 255);
+    }
     ofLine( point.x, -1 * crossLnegth + point.y - 540, point.x, crossLnegth + point.y - 540);
     ofLine( -1 * crossLnegth + point.x, point.y - 540, crossLnegth + point.x, point.y - 540);
 }
@@ -647,11 +675,10 @@ double testApp::constrain(double x, double a, double b) {
 //--------------------------------------------------------------
 
 void testApp::changeDivSpeed(){
-    
-    int randomMatter;
-    cout << "changed!!!!!!!!!!!!!! : " << ofToString(randomMatter) <<endl;
-    randomMatter = int(ofRandom(4));
-    switch (randomMatter) {
+    int randomInt;
+    randomInt = int(ofRandom(4));
+   // cout << "changed!!!!!!!!!!!!!! : " << ofToString(randomInt) <<endl;
+    switch (randomInt) {
         case 0:
             smootDivNum = 14;
             break;

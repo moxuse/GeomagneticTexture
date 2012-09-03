@@ -15,26 +15,36 @@ class RulerTextNode : public ofNode {
     public:
 
         void setup() {
-            invadorFont16.loadFont("font/AvantGarde-Medium.otf", 16);
+            invadorFont8.loadFont("font/AvantGarde-Medium.otf", 10);
         }
         
         void update() {
-        
+            
         }
 
         void customDraw(string text , bool monoColorMode) {
+            
+            if( getGlobalPosition().x < 0 ){setPosition( getGlobalPosition().x + 12960 , getY(), getZ());};
+            if( getGlobalPosition().x > 12960 ){ setPosition (getGlobalPosition().x -12960, getY(), getZ() ); };
+            
+            if( getGlobalPosition().y < 0 ){setPosition( getX(), getGlobalPosition().y + 6480 , getZ());};
+            if( getGlobalPosition().y > 6480 ){ setPosition (getX(), getGlobalPosition().y -6480, getZ() ); };
+            
             ofPushMatrix();
+                ofTranslate(getX() + 15, getY() + 25);
+                ofRotate(-90, 0, 0, 1);
                 if( monoColorMode ){
                     ofSetColor( 0 );
                 } else {
                     ofSetColor( 255 );
                 }
-                invadorFont16.drawString( text, getX(), getY() );
+                invadorFont8.drawString( text, 0, 0 );
             ofPopMatrix();
         }
         
     private:
-        ofTrueTypeFont invadorFont16;
+        ofTrueTypeFont invadorFont8;
+    
 };
 
 #endif

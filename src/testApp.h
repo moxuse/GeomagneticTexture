@@ -4,6 +4,7 @@
 #import "SerialThreadedObject.h"
 #include "ofxCsv.h"
 #include "ofxXmlSettings.h"
+#import "RulerTextNode.h"
 
 #define MAX_NUM_OF_LOW 19999
 
@@ -81,7 +82,6 @@ private:
     
     vector<ofPoint> crossPoint;
     
-    
     double friction;
     double spring;
     
@@ -107,5 +107,8 @@ private:
     ofTrueTypeFont invadorFont16;
     
     ofImage footerImage;
+    
+    RulerTextNode rulerNodeX[25];
+    RulerTextNode rulerNodeY[24];
 
 };
