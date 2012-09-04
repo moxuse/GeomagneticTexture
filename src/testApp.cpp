@@ -1,7 +1,7 @@
 #include "testApp.h"
 
 #define DEBUG 0
-
+#define SEVA_XML 0
 
 #define REF_TEXTURE_WIDTH 2160
 #define TARGET_TEXTURE_WIDTH 540
@@ -9,7 +9,7 @@
 #define TARGET_TEXTURE_HEIGHT 360
 #define HEADER_PIXEL_NUM 300
 
-#define TOUCH_COUNT_FRAME_NUM 150
+#define TOUCH_COUNT_FRAME_NUM 200
 
 //#define GEO_MAG_DEGREE_OFFSET_NORTH 12.0
 
@@ -20,7 +20,7 @@
 #define SCALE_POINT_REPAT_NUM_WIDTH 23
 #define SCALE_POINT_REPAT_NUM_HEIGHT 18
 
-//#define SENSOR_MAG_MAX 340.0
+#define SENSOR_MAG_MAX 340.0
 
 float iccOffsetDegre = -120.0;
 
@@ -45,9 +45,15 @@ bool monoColorMode = false;
 int rulerRefernceDegreeX[48] = {90,75,60,45,30,15,0,-15,-30,-45,-60,-75,-90,-105,-120,-135,-150,-165,-180,-165,-150,-135,-120,-105,-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90,105,120,135,150,165,180,165,150,135,120,105};
 int rulerRefernceDegreeY[24] = {75,60,45,30,15,0,-15,-30,-45,-60,-75,-90,-75,-60,-45,-30,-15,0,15,30,45,60,75,90};
 
+float localmapPitch;
+float localmapRoll;
+
+float totuchAcelBefoure = 0;
+float totuchMagBefoure = 0;
+
 //--------------------------------------------------------------
 void testApp::setup(){
-   // ofSetFullscreen(true);
+
     friction = 0.05;
     spring = 0.5;
     
@@ -71,10 +77,15 @@ void testApp::setup(){
     footerImage.loadImage("GT.tif");
     refImage.loadImage("magFieldImage_smoothed_2160.png");
     localMap.loadImage("localmap.png");
+    arrowImage.loadImage("arrow.png");
     targetTex.allocate(TARGET_TEXTURE_WIDTH, TARGET_TEXTURE_HEIGHT, GL_RGB);
+    localMapTextuer.allocate(localMap.getWidth(),localMap.getHeight(),GL_RGBA);
+    localMapTextuer.loadData(localMap.getPixels(),localMap.getWidth(),localMap.getHeight(),GL_RGBA);
     
     invadorFont24.loadFont("font/AvantGarde-Medium.otf", 24);
     invadorFont12.loadFont("font/AvantGarde-Medium.otf", 16);
+    
+    xmlPreset.loadFile("settings.xml");
     
     setupCsv();
     
@@ -110,17 +121,38 @@ void testApp::setup(){
     ofHideCursor();
     
     STO.start();
+    
+    ofSetFullscreen(true);
+    for(int i = 0; i<5; i++){
+        moveAverage[i] = 0;
+        moveAverageMag[i] = 0;
+    }
+
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
     if( once && ofGetFrameNum() > 100 ){
-        offsetSensorValX = STO.xValue;
-        offsetSensorValY = STO.yValue;
-        offsetSensorValZ = STO.zValue;
-        accelOffsetSensorValX = STO.accelValueX;
-        accelOffsetSensorValY = STO.accelValueY;
+//        offsetSensorValX = STO.xValue;
+//        offsetSensorValY = STO.yValue;
+//        offsetSensorValZ = STO.zValue;
+
+        offsetSensorValX = xmlPreset.getValue("sensorMagX", STO.xValue);
+        offsetSensorValY = xmlPreset.getValue("sensorMagY", STO.yValue);
+        offsetSensorValZ = xmlPreset.getValue("sensorMagZ", STO.zValue);
+        accelOffsetSensorValX = xmlPreset.getValue("sensorAccelX", STO.accelValueX);
+        accelOffsetSensorValX = xmlPreset.getValue("sensorAccelY", STO.accelValueY);
+        accelOffsetSensorValX = xmlPreset.getValue("sensorAccelZ", STO.accelValueZ);
+#if SEVA_XML == 1
+        offsetSensorValX = xmlPreset.setValue("sensorMagX", STO.xValue);
+        offsetSensorValY = xmlPreset.setValue("sensorMagY", STO.yValue);
+        offsetSensorValZ = xmlPreset.setValue("sensorMagZ", STO.zValue);
+        accelOffsetSensorValX = xmlPreset.setValue( "sensorAccelX", STO.accelValueX );
+        accelOffsetSensorValY = xmlPreset.setValue( "sensorAccelY", STO.accelValueY );
+        accelOffsetSensorValZ  = xmlPreset.setValue( "sensorAccelZ", STO.accelValueZ );
+        xmlPreset.saveFile("settings.xml");
+#endif
         //accelOffsetSensorValZ = STO.accelValueZ * (-1);
         once = false;
     }
@@ -160,24 +192,65 @@ void testApp::update(){
 
     if( simReadTime > MAX_NUM_OF_LOW ){
         simReadTime = 0;
-        if( monoColorMode ){
-            monoColorMode = false;
-        } else {
-            monoColorMode = true;
-        }
+//        if( monoColorMode ){
+//            monoColorMode = false;
+//        } else {
+//            monoColorMode = true;
+//        }
     }
     
 #pragma mark - increase Touch Sensor
-    if( 0 == STO.touch ){
+    float currentAccelZ = 0;
+    float currentMagX = 0;
+    currentAccelZ = STO.accelValueZ *0.2 + totuchAcelBefoure * 0.8;
+    currentMagX = STO.xValue *0.2 + totuchMagBefoure * 0.8;
+    totuchAcelBefoure = currentAccelZ;
+    totuchMagBefoure = currentMagX;
+    
+    bool isToucheByAccel;
+    float average = 0;
+    float averageMag = 0;
+    for(int i = 4; i >= 1; i--){
+        moveAverage[i] = moveAverage[i-1];
+        moveAverageMag[i] = moveAverageMag[i-1];
+    }
+    moveAverage[0] = currentAccelZ;
+    moveAverageMag[0] = currentMagX;
+    for(int i = 0; i < 5; i++){
+        average += moveAverage[i];
+        averageMag += moveAverageMag[i];
+    }
+    average = average / 5;
+    averageMag = averageMag / 5;
+    if( abs( float(average - currentAccelZ) ) > 14 &&  abs( float(averageMag - currentMagX) ) > 14 ){
+        isToucheByAccel = true;
+    } else {
+        isToucheByAccel = false;
+    }
+    
+    //cout << isToucheByAccel << " " <<   abs( float(averageMag - currentMagX) )  << endl;
+    
+    if(isToucheByAccel){
+        isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
+        isTouchedDevice = 1;
+    } else {
         isTouchedDeviceCount--;
         if(isTouchedDeviceCount < 0 ){
             isTouchedDeviceCount = 0;
             resetGraphArray();
         };
-    } else {
-        isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
-        isTouchedDevice = 1;
-    };
+    }
+//    
+//    if( STO.touch == 0 ){
+//        isTouchedDeviceCount--;
+//        if(isTouchedDeviceCount < 0 ){
+//            isTouchedDeviceCount = 0;
+//            resetGraphArray();
+//        };
+//    } else {
+//        isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
+//        isTouchedDevice = 1;
+//    };
     
 #pragma mark - touched Mode
     if( isTouchedDeviceCount == 0 )isTouchedDevice = 0;
@@ -196,8 +269,7 @@ void testApp::update(){
         
         accelSensorControllX = ( STO.accelValueX - accelOffsetSensorValX ) * 0.15 + accelSensorPastValX * 0.85; //smoothing
         accelSensorControllY = ( STO.accelValueY - accelOffsetSensorValY ) * 0.15 + accelSensorPastValY * 0.85; //smoothing
-        accelSensorControllZ = ( STO.accelValueZ - accelOffsetSensorValZ ) * 0.15 + accelSensorPastValZ * 0.85; //smoothing
-        
+        accelSensorControllZ = ( STO.accelValueZ - SENSOR_MAG_MAX * 0.5 ) * 0.15 + accelSensorPastValZ * 0.85; //smoothing
         
         accelSensorPastValX = accelSensorControllX;
         accelSensorPastValY = accelSensorControllY;
@@ -210,27 +282,34 @@ void testApp::update(){
         
         double pitch, roll, yaw;
         
-        pitch = atan( accelSensorControllX / sqrt( pow( accelSensorControllY, 2 ) + pow( currentMagSensorZFlipSmooth, 2 )) );// + ofDegToRad(90);
-        roll = atan( accelSensorControllY / sqrt(pow( accelSensorControllX, 2 ) + pow( currentMagSensorZFlipSmooth, 2 ))  );// + ofDegToRad(90); // roll dake okashii
+//        pitch = atan( accelSensorControllX / currentMagSensorZFlipSmooth );// + ofDegToRad(90);
+//        roll = atan( accelSensorControllY / currentMagSensorZFlipSmooth );// + ofDegToRad(90); // roll dake okashii
+        
+        pitch = atan( accelSensorControllX / sqrt( pow( accelSensorControllY, 2 ) + pow( accelSensorControllZ, 2 )) );// + ofDegToRad(90);
+        roll = atan( accelSensorControllY / sqrt(pow( accelSensorControllX, 2 ) + pow( accelSensorControllZ, 2 ))  );// + ofDegToRad(90); // roll dake okashii
         //pitch = asin( -( accelSensorControllX / SENSOR_MAG_MAX ) );
         //roll = asin( ( currentMagSensorYFlipSmooth / SENSOR_MAG_MAX ) / cos(pitch));
-        
-        yaw = atan( currentMagSensorZFlipSmooth / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
-        ofMatrix3x3 dmc = rMatrixFromEulerAngles( roll, pitch, yaw );
-        
-        magDegree = calculate_heading( dmc ,sensorControllX, sensorControllY, sensorControllZ ) * ( 180 / M_PI );
+//
+//        yaw = atan( currentMagSensorZFlipSmooth / sqrt( pow( accelSensorControllX, 2 ) + pow( accelSensorControllY, 2 ))  ) ;
+//        ofMatrix3x3 dmc = rMatrixFromEulerAngles( roll, pitch, yaw );
+//        
+//        magDegree = calculate_heading( dmc ,sensorControllX, sensorControllY, sensorControllZ ) * ( 180 / M_PI );
         //magDegree = calculate_heading( pitch, roll ,sensorControllX, sensorControllY, sensorControllZ )
-
+        magDegree = atan2( sensorControllY , sensorControllX ) * ( 180 / M_PI );
+        
+        localmapPitch = pitch ;
+        localmapRoll = roll ;
         ///////////////////////////////////////////////////////
         
         //magDegree = magDegree * 0.15 + magDegreeBefore * 0.85;//calculate_heading
         //if( 160 < magDegree && magDegree < 200 )magDegree = 180;
 
         float distDegree;
-        distDegree = magDegree - 180.0;
-        localMapAlpha = 255 - abs (255 - distDegree * 255.0 / 180.0 );
+        distDegree = magDegree + 180.0;
+        //cout << localmapRoll<< " "<< localmapRoll  << endl;
+        localMapAlpha = 255 - abs ( 255 - distDegree * 255.0 / 180.0 );
         
-        magDegreeBefore = magDegree;
+        //magDegreeBefore = magDegree;
 
     } else {
         centerOfPixelReadX = ofMap( currentReadPosX , -180.0, 180.0, 0.0, 2160.0);
@@ -382,7 +461,7 @@ void testApp::draw(){
             powerPoint = ofPoint( xPoint *0.8, yPoint*0.8 );
             
             ofPushMatrix();
-            ofTranslate( (i - 4) * 16 , (j - 2) * 16 );
+            ofTranslate( (i - 4) * 20 , (j - 2) * 20 );
             
             //rotation makes a effect moire.
             ofRotateZ( currentInvadorPosture );
@@ -411,31 +490,43 @@ void testApp::draw(){
         ofSetColor(0, 0, 0, 205);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
         ofPushMatrix();
-            ofTranslate( 1620 / 2 , ofGetHeight() / 2 );
-            ofRotate( magDegree, 0, 0, 1);
-            ofRotate( -140, 0, 0, 1);
-            ofSetColor(255);
-            ofLine(0, 0, 0, 400);
+        ofTranslate( 1620 / 2 , ofGetHeight() / 2 );
+        //ofRotate( 180, 0, 0, 1);
+        //ofPushMatrix();
+        
+        ofRotate(ofRadToDeg( localmapRoll ), 1,0,0);
+        ofRotate( magDegree, 0, 0, 1);
+        ofRotate( ofRadToDeg( localmapPitch ), 0,1,0);
+        ofSetColor(255, 255, 255, localMapAlpha);
+        //ofSetColor(255, 255, 255, 255);
+        //localMap.draw(  -1620 / 2 , -ofGetHeight() / 2 );
+        localMapTextuer.draw( -1620 / 2 , -ofGetHeight() / 2, 0);
+        //ofPopMatrix();
         ofPopMatrix();
         
-        ofSetColor(255, 255, 255, localMapAlpha);
-        localMap.draw(0,0, 1620, 1080);
+            ofRotate( 220, 0, 0, 1);
+            
+        ofPopMatrix();
         
-        ofPushStyle();
-            ofNoFill();
-            ofSetColor(255, 0, 0);
-            for(int i = 1;i<1080; i++){
-                ofLine( 1600 - grphMagArrayX[i], i , 1600 - grphMagArrayX[i-1], i - 1);
-            }
-            ofSetColor(255, 255, 0);
-            for(int i = 1;i<1080; i++){
-                ofLine( 1600 - grphMagArrayY[i], i , 1600 - grphMagArrayY[i-1], i - 1);
-            }
-            ofSetColor(0, 255, 255);
-            for(int i = 1;i<1080; i++){
-                ofLine( 1600 - grphMagArrayZ[i], i , 1600 - grphMagArrayZ[i-1], i - 1);
-            }
-        ofPopStyle();
+        ofSetColor(255);
+        localMap.draw(0,0, 1620, 1080);
+        arrowImage.draw(120, 120 );
+        
+//        ofPushStyle();
+//            ofNoFill();
+//            ofSetColor(255, 0, 0);
+//            for(int i = 1; i < 1080; i++){
+//                ofLine( 1600 - grphMagArrayX[i], i , 1600 - grphMagArrayX[i-1], i - 1);
+//            }
+//            ofSetColor(255, 255, 0);
+//            for(int i = 1; i < 1080; i++){
+//                ofLine( 1600 - grphMagArrayY[i], i , 1600 - grphMagArrayY[i-1], i - 1);
+//            }
+//            ofSetColor(0, 255, 255);
+//            for(int i = 1; i < 1080; i++){
+//                ofLine( 1600 - grphMagArrayZ[i], i , 1600 - grphMagArrayZ[i-1], i - 1);
+//            }
+//        ofPopStyle();
         
     }
     ofPopMatrix();
@@ -453,7 +544,6 @@ void testApp::draw(){
     drawConsole();
     
 #if DEBUG == 1
-  //  targetTex.draw(0,0);
     drawDebugConsole();
 #endif
 
@@ -466,14 +556,10 @@ void testApp::drawConsole() {
         ofTranslate(-HEADER_PIXEL_NUM,1080);
         ofRotate(-90, 0, 0, 1);
         footerImage.draw(0,0);
-#if DEBUG == 1
-//        ofNoFill();
-//        ofRect(0,0,1060,120);
-#endif
+
     if(monoColorMode){
         ofSetColor(0);
     }
-    
 
         invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360); // this is dummy, do not commentout.
     if(!isTouchedDevice){    

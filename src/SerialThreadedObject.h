@@ -73,9 +73,12 @@ public:
                             touch = touchedByte;
                                     for(int i=0; i<3;i++){
                                         signed int sensorByte;
+                                        
                                         int hByte = serial.readByte();
                                         int lByte = serial.readByte();
+                                        
                                         sensorByte = (hByte << 8) + lByte;
+                                        
                                         if( i > 0 ){//y,z軸のみ符号反転
                                             sensorByte = sensorByte - USHRT_MAX;
                                         }

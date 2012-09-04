@@ -40,7 +40,9 @@ private:
     wng::ofxCsv csv;
     ofImage localMap;
     ofImage refImage;
+    ofImage arrowImage;
     ofTexture targetTex;
+    ofTexture localMapTextuer;
     
     SerialThreadedObject STO;
     
@@ -108,6 +110,9 @@ private:
     ofTrueTypeFont invadorFont12;
     
     ofImage footerImage;
+    
+    float moveAverage[5];
+    float moveAverageMag[5];
     
     RulerTextNode rulerNodeX[25];
     RulerTextNode rulerNodeY[24];
