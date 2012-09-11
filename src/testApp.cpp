@@ -1,7 +1,7 @@
 #include "testApp.h"
 
-#define DEBUG 0
-#define SEVA_XML 0
+#define DEBUG 1
+#define SEVE_XML 0
 
 #define REF_TEXTURE_WIDTH 2160
 #define TARGET_TEXTURE_WIDTH 540
@@ -122,7 +122,7 @@ void testApp::setup(){
     
     STO.start();
     
-    ofSetFullscreen(true);
+    //ofSetFullscreen(true);
     for(int i = 0; i<5; i++){
         moveAverage[i] = 0;
         moveAverageMag[i] = 0;
@@ -134,17 +134,14 @@ void testApp::setup(){
 void testApp::update(){
     
     if( once && ofGetFrameNum() > 100 ){
-//        offsetSensorValX = STO.xValue;
-//        offsetSensorValY = STO.yValue;
-//        offsetSensorValZ = STO.zValue;
-
+        
         offsetSensorValX = xmlPreset.getValue("sensorMagX", STO.xValue);
         offsetSensorValY = xmlPreset.getValue("sensorMagY", STO.yValue);
         offsetSensorValZ = xmlPreset.getValue("sensorMagZ", STO.zValue);
         accelOffsetSensorValX = xmlPreset.getValue("sensorAccelX", STO.accelValueX);
         accelOffsetSensorValX = xmlPreset.getValue("sensorAccelY", STO.accelValueY);
         accelOffsetSensorValX = xmlPreset.getValue("sensorAccelZ", STO.accelValueZ);
-#if SEVA_XML == 1
+#if SEVE_XML == 1
         offsetSensorValX = xmlPreset.setValue("sensorMagX", STO.xValue);
         offsetSensorValY = xmlPreset.setValue("sensorMagY", STO.yValue);
         offsetSensorValZ = xmlPreset.setValue("sensorMagZ", STO.zValue);
@@ -192,11 +189,6 @@ void testApp::update(){
 
     if( simReadTime > MAX_NUM_OF_LOW ){
         simReadTime = 0;
-//        if( monoColorMode ){
-//            monoColorMode = false;
-//        } else {
-//            monoColorMode = true;
-//        }
     }
     
 #pragma mark - increase Touch Sensor
@@ -240,17 +232,6 @@ void testApp::update(){
             resetGraphArray();
         };
     }
-//    
-//    if( STO.touch == 0 ){
-//        isTouchedDeviceCount--;
-//        if(isTouchedDeviceCount < 0 ){
-//            isTouchedDeviceCount = 0;
-//            resetGraphArray();
-//        };
-//    } else {
-//        isTouchedDeviceCount = TOUCH_COUNT_FRAME_NUM;
-//        isTouchedDevice = 1;
-//    };
     
 #pragma mark - touched Mode
     if( isTouchedDeviceCount == 0 )isTouchedDevice = 0;
@@ -404,9 +385,6 @@ double testApp::calculate_heading(const ofMatrix3x3 &dcm_matrix,double mag_x, do
     if (cos_pitch == 0.0) {
         return 0;
     }
-    //c.x = c
-    //c.y = f
-    //c.z = i
     
     // Tilt compensated magnetic field X component:
     headX = mag_x*cos_pitch - mag_y*dcm_matrix.f*dcm_matrix.c/cos_pitch - mag_z*dcm_matrix.i*dcm_matrix.c/cos_pitch;
@@ -491,17 +469,12 @@ void testApp::draw(){
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
         ofPushMatrix();
         ofTranslate( 1620 / 2 , ofGetHeight() / 2 );
-        //ofRotate( 180, 0, 0, 1);
-        //ofPushMatrix();
         
         ofRotate(ofRadToDeg( localmapRoll ), 1,0,0);
         ofRotate( magDegree, 0, 0, 1);
         ofRotate( ofRadToDeg( localmapPitch ), 0,1,0);
         ofSetColor(255, 255, 255, localMapAlpha);
-        //ofSetColor(255, 255, 255, 255);
-        //localMap.draw(  -1620 / 2 , -ofGetHeight() / 2 );
         localMapTextuer.draw( -1620 / 2 , -ofGetHeight() / 2, 0);
-        //ofPopMatrix();
         ofPopMatrix();
         
             ofRotate( 220, 0, 0, 1);
@@ -621,37 +594,6 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 //--------------------------------------------------------------
 void testApp::drawScaleLines(){
     
-//    //right
-//    ofSetColor(255, 255, 255);
-//    ofSetLineWidth(1.0);
-//    ofLine( 1,1 ,1,10 );
-//    for(int i =0; i<90; i++){
-//        int xPoint;
-//        xPoint = i * 18;
-//        ofLine( xPoint,0 ,xPoint,10 );
-//    }
-//    ofLine( 1620,0 ,1620,10 );
-//    
-//    //top
-//    ofLine( 0,0 ,10,0 );
-//    for(int i =0; i<61; i++){
-//        int yPoint;
-//        yPoint = i * 18;
-//        ofLine(0,yPoint,10,yPoint);
-//    }
-//    ofLine( 0, 1079 ,10, 1079 );
-//    
-//    //lefl
-//    ofSetColor(255, 255, 255);
-//    ofSetLineWidth(1.0);
-//    ofLine( 1, 1080 ,1, 1070 );
-//    for(int i =0; i<90; i++){
-//        int xPoint;
-//        xPoint = i * 18;
-//        ofLine( xPoint, 1080 ,xPoint, 1070 );
-//    }
-//    ofLine( 1620, 1080 ,1620, 1070 );
-    
     //follow with world map scale poit crrosses
     ofPushMatrix();
     ofSetLineWidth( 1.0f );
@@ -663,9 +605,6 @@ void testApp::drawScaleLines(){
     ofPopMatrix();
     
     ofSetColor( 255, 0, 0 );
-    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
-    //ofLine(ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 0, ofMap(currentReadPosX, -180.0, 180.0, 0.0, 2160.0) * 4, 1080);
-    
     ofLine(0, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 + 1620, 1620, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 + 1620);
     ofLine(0, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 - 1620, 1620, ofMap(currentReadPosY, -90, 90, 0, 1080) * 3 - 1620);
     
@@ -728,8 +667,8 @@ void testApp::drawDebugConsole(){
     ofSetColor(255, 255, 255);
     ofDrawBitmapString("framerate ; " + ofToString( ofGetFrameRate() ) ,10,10);
     
-    ofDrawBitmapString( ofToString(centerOfPixelReadX) ,10, 30);
-    ofDrawBitmapString( ofToString(centerOfPixelReadY) ,10, 40);
+    ofDrawBitmapString( "centerOfPixelReadX : " + ofToString(centerOfPixelReadX) ,10, 30);
+    ofDrawBitmapString( "centerOfPixelReadY : " + ofToString(centerOfPixelReadY) ,10, 40);
     ofDrawBitmapString( ofToString( STO.touch ), 10,50);
     ofDrawBitmapString( "xValue : " + ofToString( sensorControllX ), 10,70);
     ofDrawBitmapString( "yValue : " + ofToString( sensorControllY ), 10,90);
