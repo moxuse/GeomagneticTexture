@@ -11,7 +11,6 @@
 #define SERIAL_DEVICE_PATH_NAME "tty.usbserial-A501DG5Z"
 //#define SERIAL_DEVICE_PATH_NAME "tty.usbmodem1411"
 #define BAUD_RATE 57600
-#define TYPE_SERIAL_ERROR 9999
 
 #import "ofmain.h"
 #import "ofxThread.h"
@@ -62,7 +61,7 @@ public:
         while( isThreadRunning() != 0 ){
             if( lock() ){
                 // Serial Read Loop
-                if( serial.available() > 16 ){ //パケット長16バイトバッファにたまったら
+                if( serial.available() > 15 ){ //パケット長15バイトバッファにたまったら
                     int checkByte;
                     checkByte = serial.readByte();
                     if( 43 == checkByte ){
@@ -73,11 +72,10 @@ public:
                             touch = touchedByte;
                                     for(int i=0; i<3;i++){
                                         signed int sensorByte;
-                                        
                                         int hByte = serial.readByte();
                                         int lByte = serial.readByte();
                                         
-                                        sensorByte = (hByte << 8) + lByte;
+                                        sensorByte = (hByte << 8) + lByte; //上位ビットと下位ビット結合
                                         
                                         if( i > 0 ){//y,z軸のみ符号反転
                                             sensorByte = sensorByte - USHRT_MAX;
@@ -99,7 +97,7 @@ public:
                                         int accelSensorByte;
                                         int hByte = serial.readByte();
                                         int lByte = serial.readByte();
-                                        accelSensorByte = (hByte << 8) + lByte;
+                                        accelSensorByte = (hByte << 8) + lByte; //上位ビットと下位ビット結合
                                         
                                         switch(i){
                                             case 0:
