@@ -107,7 +107,7 @@ private:
     ofxXmlSettings xmlPreset;
     
     ofTrueTypeFont invadorFont24;
-    ofTrueTypeFont invadorFont12;
+    ofTrueTypeFont invadorFont16;
     
     ofImage footerImage;
     

@@ -83,7 +83,7 @@ void testApp::setup(){
     localMapTextuer.loadData(localMap.getPixels(),localMap.getWidth(),localMap.getHeight(),GL_RGBA);
     
     invadorFont24.loadFont("font/AvantGarde-Medium.otf", 24);
-    invadorFont12.loadFont("font/AvantGarde-Medium.otf", 16);
+    invadorFont16.loadFont("font/AvantGarde-Medium.otf", 16);
     
     xmlPreset.loadFile("settings.xml");
     
@@ -536,8 +536,8 @@ void testApp::drawConsole() {
 
         invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360); // this is dummy, do not commentout.
     if(!isTouchedDevice){    
-        invadorFont12.drawString("Latitude : " + ofToString( currentReadPosX ), 540, 1230);
-        invadorFont12.drawString("Longtitude : " + ofToString( (currentReadPosY * 3) ), 540, 1260);
+        invadorFont16.drawString("Latitude : " + ofToString( currentReadPosX ), 540, 1230);
+        invadorFont16.drawString("Longtitude : " + ofToString( (currentReadPosY * 3) ), 540, 1260);
     }
     ofPopStyle();
     ofPopMatrix();
