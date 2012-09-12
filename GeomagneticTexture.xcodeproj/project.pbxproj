@@ -887,6 +887,7 @@
 					../../../addons/ofxThread/libs,
 					../../../addons/ofxThread/src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -924,6 +925,7 @@
 					../../../addons/ofxThread/libs,
 					../../../addons/ofxThread/src,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
