@@ -24,7 +24,7 @@
 
 float iccOffsetDegre = -120.0;
 
-int smootDivNum = 8;
+int smootDivNum = 6;
 
 unsigned char *refPix;
 unsigned char targetPix[ TARGET_TEXTURE_WIDTH * TARGET_TEXTURE_HEIGHT * 3 ];
@@ -156,7 +156,7 @@ void testApp::update(){
     
 #pragma mark -smooth liner hokan by spring
     
-    if(ofGetFrameNum()%smootDivNum==0){
+    if( ofGetFrameNum()%smootDivNum == 0 ){
         simReadTime ++;
         nextReadPosX = vlat[simReadTime];
         nextReadPosY = vlon[simReadTime];
@@ -293,7 +293,7 @@ void testApp::update(){
         //magDegreeBefore = magDegree;
 
     } else {
-        centerOfPixelReadX = ofMap( currentReadPosX , -180.0, 180.0, 0.0, 2160.0);
+        centerOfPixelReadX = ofMap( currentReadPosX , -180.0, 180.0, 0.0, 2160.0 );
         centerOfPixelReadY = ofMap( currentReadPosY, 90.0, -90.0, 0.0, 1080.0 );
         
         //centerOfPixelReadX =  -ofGetFrameNum()*1.5;
@@ -370,7 +370,7 @@ void testApp::update(){
         grphMagArrayY[0] = sensorControllY * 0.1;
         grphMagArrayZ[0] = sensorControllZ * 0.1;
     }
-    
+
 }
 //--------------------------------------------------------------
 
@@ -528,16 +528,62 @@ void testApp::drawConsole() {
     ofPushStyle();
         ofTranslate(-HEADER_PIXEL_NUM,1080);
         ofRotate(-90, 0, 0, 1);
-        footerImage.draw(0,0);
+        footerImage.draw( 0, 0 );
 
     if(monoColorMode){
         ofSetColor(0);
     }
 
         invadorFont24.drawString("this is HELEVETICA Neue 24pt 0123456789 +_ * ? / ", 0, 2360); // this is dummy, do not commentout.
-    if(!isTouchedDevice){    
-        invadorFont16.drawString("Latitude : " + ofToString( currentReadPosX ), 540, 1230);
-        invadorFont16.drawString("Longtitude : " + ofToString( (currentReadPosY * 3) ), 540, 1260);
+    if(!isTouchedDevice){
+        
+        ////////////////////////////// display correct longtitude / latitude //////////////////////////
+
+        float consolePresentLongtitude = ofMap( centerOfPixelReadX, 1080, -1080, -180, 180 );
+        
+        consolePresentLongtitude = consolePresentLongtitude;
+        
+        if( consolePresentLongtitude > 360 ){
+            consolePresentLongtitude = 360 - consolePresentLongtitude ;
+        }
+        
+        if( consolePresentLongtitude < -360 ){
+            consolePresentLongtitude = -1 * ( 360 + consolePresentLongtitude );
+        }
+        
+        if( consolePresentLongtitude > 180.0){
+            consolePresentLongtitude = 180.0 - ( consolePresentLongtitude - 180.0);
+        }
+        
+        if( consolePresentLongtitude < -180.0){
+            consolePresentLongtitude = -1 * ( 180.0 + ( consolePresentLongtitude + 180.0) );
+        }
+        
+        
+        float consolePresentLatitude = ofMap( centerOfPixelReadY, 0, 1080, 90, -90 ) * -1;
+        
+        consolePresentLatitude = consolePresentLatitude + 30;
+        
+        if( consolePresentLatitude > 180 ){
+            consolePresentLatitude = 180 - consolePresentLatitude ;
+        }
+        
+        if( consolePresentLatitude < -180 ){
+            consolePresentLatitude = -1 * ( 180 + consolePresentLatitude );
+        }
+        
+        if( consolePresentLatitude  > 90.0 ){
+            consolePresentLatitude = 90.0 - ( consolePresentLatitude - 90.0 );
+        }
+        
+        if( consolePresentLatitude  < -90.0 ){
+            consolePresentLatitude = -1 * ( 90.0 + ( consolePresentLatitude + 90.0 ) );
+        }
+        
+        invadorFont16.drawString("Latitude : " + ofToString( consolePresentLatitude ), 540, 1230 );
+        invadorFont16.drawString("Longtitude : " + ofToString( consolePresentLongtitude ), 540, 1260 );
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////
     }
     ofPopStyle();
     ofPopMatrix();
