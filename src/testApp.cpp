@@ -1,6 +1,6 @@
 #include "testApp.h"
 
-#define DEBUG 1
+#define DEBUG 0
 #define SEVE_XML 0
 
 #define REF_TEXTURE_WIDTH 2160
@@ -122,7 +122,7 @@ void testApp::setup(){
     
     STO.start();
     
-    //ofSetFullscreen(true);
+//    ofSetFullscreen(true);
     for(int i = 0; i<5; i++){
         moveAverage[i] = 0;
         moveAverageMag[i] = 0;
@@ -452,7 +452,7 @@ void testApp::draw(){
                            targetPix[((int)(j*6 *TARGET_TEXTURE_WIDTH + i * 6 ) * 3 + 2 ) ]
                            );
             }
-            ofLine( 0, powerPoint );
+            ofLine( ofPoint(0,0), powerPoint );
             ofPopMatrix();
         }
     }

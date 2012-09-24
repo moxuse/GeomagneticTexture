@@ -13,9 +13,9 @@
 #define BAUD_RATE 57600
 
 #import "ofmain.h"
-#import "ofxThread.h"
+//#import "ofxThread.h"
 
-class SerialThreadedObject : public ofxThread{
+class SerialThreadedObject : public ofThread{
 
 private:
     ofSerial serial;
